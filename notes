@@ -1,0 +1,93 @@
+DATABASE
+Users
+    *username
+    *email
+    *password_digest    
+    *instrument
+    -has secure password
+    -has many setlists, as creator
+    -has many memberships
+    -has many teams, through memberships
+    -has many accessible_setlists, through teams
+    -has many led_teams, as leader
+    -has many added_arrangements, through arrangments
+
+Teams
+    *name
+    *leader_id
+    belongs_to leader, class User
+    has many memberships
+    has many team_members, through memberships, class user
+    has many setlists
+    has many arrangements, through setlists
+
+Memberships
+    *team_id
+    *user_id
+    belongs to team
+    belongs to user
+
+Songs 
+    *name 
+    *artist_id
+    belongs_to artist (not required)
+    has many arrangments
+    has many charts, through arrangements
+    has many arrangers, through arrangements
+    has many genres, through arrangements
+
+Artists
+    *name 
+    has many songs
+
+Arrangements
+    *song_id
+    *arranger_id
+    *key
+    *tempo
+    *owner_id
+    belongs to a song
+    belongs to an owner
+    belongs to an arranger
+    has many charts
+    has many genre tags
+    has many genres through genre tags
+
+Arrangers 
+    *name
+    has many arrangements
+
+Charts
+    *instrument
+    *pdf_url
+    *arrangement_id
+    belongs to arrangment
+    has one song, through arrangments
+
+Genre Tags 
+    *genre_id
+    *arrangement_id
+    belongs to a genre
+    belongs to an arrangement
+
+Genres
+    *name
+    has many genre tags
+    has many arrangements, through genre tags
+
+Setlists
+    *name   
+    *team_id
+    *creator_id
+    belongs to a creator, class User
+    belongs to a team
+    has many arrangements
+
+Set Entries
+    *setlist_id
+    *arrangement_id
+    belongs to a setlist
+    belongs to an arrangement
+
+    
+
