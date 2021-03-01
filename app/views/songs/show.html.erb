@@ -1,0 +1,16 @@
+<main class="container">
+    <section class="show_song_header">
+        <h1><%= @song.name %></h1>
+    </section>
+    <section class="show_song_body">
+        <%= render partial: 'song_details', 
+                   :locals => {
+                       song: @song,
+                       user: @user
+                   }             
+        %>
+    </section>
+    <section class="show_song_footer">
+    
+    </section>
+</main>

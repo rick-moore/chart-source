@@ -1,0 +1,16 @@
+<main class="container">
+    <section class="show_arrangement_header">
+        <h1>Arrangement Details</h1>
+    </section>
+    <section class="show_arrangement_body">
+        <%= render :partial => 'arrangement_details', 
+                   :locals => {
+                        arrangement: @arrangement, 
+                        user: @user
+                   } 
+        %>
+    </section>
+    <section class="show_arrangement_footer">
+
+    </section>
+</main>

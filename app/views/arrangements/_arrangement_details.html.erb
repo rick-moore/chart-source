@@ -1,0 +1,35 @@
+<h2>Charts:</h2>
+<ul>
+    <% arrangement.charts.each do |chart| %>
+        <li>
+            <%= chart.instrument %>
+        </li>
+    <% end %>
+</ul>
+<br>
+<h2>Key: <%= arrangement.key %></h2>
+<br>
+<h2>Tempo: <%= arrangement.tempo %></h2>
+<br>
+<h2>Genres:</h2>
+<ul>
+    <% arrangement.genres.each do |genre| %>
+        <li>
+            <%= genre.name %>
+        </li>
+    <% end %>
+</ul>
+<br>
+<button>
+    <h3><%= link_to "See All Arrangements of " + arrangement.song.name, user_song_path(user, arrangement.song) %></h3>
+</button>
+<br>
+<br>
+<button>
+    <h3><%= link_to "See All Songs by " + arrangement.song.artist.name, user_artist_path(user, arrangement.song.artist) %></h3>
+</button>
+<br>
+<br>
+<button>
+    <h3><%= link_to "See All Arrangements by " + arrangement.arranger.name, user_arranger_path(user, arrangement.arranger) %></h3>
+</button>

@@ -1,0 +1,17 @@
+<main class="container">
+    <section class="show_arranger_header">
+        <h1><%= @arranger.name %></h1>
+    </section>
+    <section class="show_arranger_body">
+        <ul>
+            <% @arrangements.each do |arrangement| %>
+                <li>
+                    <%= link_to arrangement.song.name, user_song_path(@user, arrangement) %> - <%= link_to arrangement.song.artist.name, user_artist_path(@user, arrangement.song.artist) %>
+                </li>
+            <% end %>
+        </ul>
+    </section>
+    <section class="show_arranger_footer">
+
+    </section>
+</main>

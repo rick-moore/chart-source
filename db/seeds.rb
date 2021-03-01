@@ -23,25 +23,25 @@ Membership.create(team_id: 1, user_id: 7)
 Membership.create(team_id: 1, user_id: 8)
 
 ##### ARTISTS #####
-artist1 = Artist.create(name: "Michael Jackson")
-artist2 = Artist.create(name: "Tom Petty")
-artist3 = Artist.create(name: "Beyonce")
-artist4 = Artist.create(name: "Phil Collins")
-artist5 = Artist.create(name: "Bruno Mars")
+artist1 = Artist.create(name: "Michael Jackson", owner: user1)
+artist2 = Artist.create(name: "Tom Petty", owner: user1)
+artist3 = Artist.create(name: "Beyonce", owner: user1)
+artist4 = Artist.create(name: "Phil Collins", owner: user1)
+artist5 = Artist.create(name: "Bruno Mars", owner: user1)
 
 ##### ARRANGERS #####
-arranger1 = Arranger.create(name: "Shawn Evans")
-arranger2 = Arranger.create(name: "Peter Halloin")
-arranger3 = Arranger.create(name: "Sammy Nestico")
-arranger4 = Arranger.create(name: "Sammy Rothberg")
-arranger5 = Arranger.create(name: "Carnival")
+arranger1 = Arranger.create(name: "Shawn Evans", owner: user1)
+arranger2 = Arranger.create(name: "Peter Halloin", owner: user1)
+arranger3 = Arranger.create(name: "Sammy Nestico", owner: user1)
+arranger4 = Arranger.create(name: "Sammy Rothberg", owner: user1)
+arranger5 = Arranger.create(name: "Carnival", owner: user1)
 
 ##### SONGS #####
-song1 = artist1.songs.create(name: "Beat It")
-song2 = artist2.songs.create(name: "Mary Janes Last Dance")
-song3 = artist3.songs.create(name: "Crazy in Love")
-song4 = artist4.songs.create(name: "In The Air Tonight")
-song5 = artist5.songs.create(name: "24K Magic")
+song1 = artist1.songs.create(name: "Beat It", owner: user1)
+song2 = artist2.songs.create(name: "Mary Janes Last Dance", owner: user1)
+song3 = artist3.songs.create(name: "Crazy in Love", owner: user1)
+song4 = artist4.songs.create(name: "In The Air Tonight", owner: user1)
+song5 = artist5.songs.create(name: "24K Magic", owner: user1)
 
 ##### ARRANGEMENTS #####
 arrangement1 = user1.owned_arrangements.create(arranger: arranger1, song: song1, key: "Em", tempo: 118)
@@ -53,11 +53,11 @@ arrangement6 = user1.owned_arrangements.create(arranger: arranger4, song: song4,
 arrangement7 = user1.owned_arrangements.create(arranger: arranger5, song: song5, key: "Ebm", tempo: 134)
 
 ##### GENRES #####
-genre1 = Genre.create(name: "pop")
-genre2 = Genre.create(name: "blues")
-genre3 = Genre.create(name: "rock")
-genre4 = Genre.create(name: "jazz")
-genre5 = Genre.create(name: "R&B")
+genre1 = Genre.create(name: "pop", owner: user1)
+genre2 = Genre.create(name: "blues", owner: user1)
+genre3 = Genre.create(name: "rock", owner: user1)
+genre4 = Genre.create(name: "jazz", owner: user1)
+genre5 = Genre.create(name: "R&B", owner: user1)
 
 arrangement1.genres << genre1
 arrangement1.genres << genre3

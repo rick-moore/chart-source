@@ -1,0 +1,34 @@
+<main class="container">
+    <section class="dashboard_header">
+        <h1>Dashboard</h1>
+        <h2>You are logged in as: <%= current_user.username %></h2>
+    </section>
+    <section class="dashboard_body">
+        <article class="my_arrangements_list">
+            <h2>My Arrangements:</h2>
+            <br>
+            <% @user.owned_arrangements.each do |arrangement| %>
+                <%= render partial: 'arrangement_card', :locals => { user: @user, arrangement: arrangement } %>
+            <% end %>
+        </article>
+        <article class="my_setlists_list">
+            <h2>My Setlist:</h2>
+                <%= collection_select :setlist, :setlist_id, Setlist.all, :id, :name %>
+            <div class="setlist_list">
+            </div>
+        </article>
+    </section>
+    <section class="dashboard_footer">
+    
+    </section>
+</main>
+
+<script>
+    function accordionAction(object) {
+        details = object.nextElementSibling.classList.toggle("active")
+    }
+
+    function addToSetlist(object) {
+
+    }
+</script>
