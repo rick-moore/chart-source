@@ -8,13 +8,18 @@
             <h2>My Arrangements:</h2>
             <br>
             <% @user.owned_arrangements.each do |arrangement| %>
-                <%= render partial: 'arrangement_card', :locals => { user: @user, arrangement: arrangement } %>
+                <%= render partial: 'arrangements/arrangement_card', :locals => { user: @user, arrangement: arrangement } %>
             <% end %>
         </article>
         <article class="my_setlists_list">
             <h2>My Setlist:</h2>
-                <%= collection_select :setlist, :setlist_id, Setlist.all, :id, :name, {:class => "setlist_selection"} %>
+                <%= collection_select :setlist, :id, @user.created_setlists.all, :id, :name %>
             <div id="setlist_list">
+                <% @setlist.arrangements.each do |arrangement| %>
+                    <%= render partial: 'arrangements/arrangement_card', :locals => { user: @user, arrangement: arrangement } %>
+                <% end %>
+            </div>
+            <div id="setlist_add">
                 <%= link_to 'New Setlist', new_user_setlist_path(@user), remote: true %>
             </div>
         </article>
@@ -28,4 +33,28 @@
     function accordionAction(object) {
         details = object.nextElementSibling.classList.toggle("active")
     }
+
+    $(document).ready(function() {
+        $("#setlist_id").on('change', function(){
+            $.ajax({
+                url: "/populate_setlist",
+                type: "GET",
+                data: {setlist_id: $(this).val()}
+            })
+        });
+    })
+
+    $(document).ready(function() {
+        $(".add_to_setlist").on('click', function(event){
+            event.stopImmediatePropagation();
+            $.ajax({
+                url: "/add_to_setlist",
+                type: "GET",
+                data: {
+                    arrangement_id: $(this).children(".arrangement_id_span").text(),
+                    setlist_id: $("#setlist_id").val()
+                }
+            })
+        });
+    })
 </script>

@@ -25,6 +25,24 @@ class SetlistsController < ApplicationController
         end
     end
 
+    def populate_setlist
+        @setlist = Setlist.find(params[:setlist_id])
+        @user = current_user
+        respond_to do |format|
+            format.js { render partial: 'populate_setlist' }
+        end
+    end
+
+    def add_to_setlist
+        @setlist = Setlist.find(params[:setlist_id])
+        @arrangement = Arrangement.find(params[:arrangement_id])
+        @user = current_user
+        @setlist.arrangements << @arrangement
+        respond_to do |format|
+            format.js { render partial: 'add_to_setlist' }
+        end
+    end
+
     private
         def setlist_params
             params.require(:setlist).permit(:name, :team_id, :owner_id)

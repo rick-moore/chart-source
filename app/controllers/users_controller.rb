@@ -6,6 +6,7 @@ class UsersController < ApplicationController
 
     def show
         if @user == current_user
+            @setlist = @user.created_setlists.first
             render 'users/show'
         else
             redirect_to home_path

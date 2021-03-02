@@ -7,13 +7,14 @@
             </span>
             <span>
 
-                <button class="add_to_setlist_button" onclick="addToSetlist(this)">
+                <button class="add_to_setlist">
+                <span style="display: none" class="arrangement_id_span"><%= arrangement.id %></span>
                     >
                 </button>
             </span>
         </div>
         <div class="accordion_details">
-            <%= render partial: 'arrangements/arrangement_details', :locals => {user: @user, arrangement: arrangement} %>
+            <%= render partial: "arrangements/arrangement_details", :locals => {user: @user, arrangement: arrangement} %>
         </div>
     </div>
 </div>
