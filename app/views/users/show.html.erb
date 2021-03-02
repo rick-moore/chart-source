@@ -13,8 +13,9 @@
         </article>
         <article class="my_setlists_list">
             <h2>My Setlist:</h2>
-                <%= collection_select :setlist, :setlist_id, Setlist.all, :id, :name %>
-            <div class="setlist_list">
+                <%= collection_select :setlist, :setlist_id, Setlist.all, :id, :name, {:class => "setlist_selection"} %>
+            <div id="setlist_list">
+                <%= link_to 'New Setlist', new_user_setlist_path(@user), remote: true %>
             </div>
         </article>
     </section>
@@ -26,9 +27,5 @@
 <script>
     function accordionAction(object) {
         details = object.nextElementSibling.classList.toggle("active")
-    }
-
-    function addToSetlist(object) {
-
     }
 </script>

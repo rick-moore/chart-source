@@ -1,0 +1,24 @@
+<%= form_with(model: setlist, url: "/users/#{user.id}/setlists", local: false) do |form| %>
+    <% if setlist.errors.any? %>
+        <div class="error_explanation">
+            <h2><%= pluralize(setlist.errors.count, "error") %> prohibited this setlist from being saved:</h2>
+
+            <ul>
+                <% setlist.errors.full_messages.each do |message| %>
+                    <li>
+                        <%= message %>
+                    </li>
+                <% end %>
+            </ul>
+        </div>
+    <% end %>
+
+    <div class="field">
+        <%= form.label :name %>
+        <%= form.text_field :name %>
+    </div>
+
+    <div class="actions">
+        <%= form.submit %>
+    </div>
+<% end %>
