@@ -3,6 +3,7 @@ class CreateSetEntries < ActiveRecord::Migration[6.1]
     create_table :set_entries do |t|
       t.integer :setlist_id
       t.integer :arrangement_id
+      t.integer :position
 
       t.timestamps
     end

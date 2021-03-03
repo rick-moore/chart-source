@@ -1,4 +1,4 @@
 $('#setlist_list').children().remove();
-<% @setlist.arrangements.each do |arrangement| %>
-    $('#setlist_list').append('<%= j render partial: "arrangements/arrangement_card", :locals => { user: @user, arrangement: arrangement } %>')
+<% @setlist.set_entries.order(position: :asc).each do |set_entry| %>
+    $('#setlist_list').append('<%= j render partial: "arrangements/arrangement_card", :locals => { user: @user, arrangement: set_entry.arrangement, kind: "setlist_list", set_entry: set_entry } %>')
 <% end %>

@@ -124,14 +124,15 @@ arrangement7.charts.create(instrument: "Vocals")
 ##### SETLISTS #####
 setlist1 = team1.setlists.create(name: "Fun Music Night 1", creator: user1)
 
-setlist1.arrangements << arrangement1
-setlist1.arrangements << arrangement4
-setlist1.arrangements << arrangement5
-setlist1.arrangements << arrangement7
 
-setlist1 = team1.setlists.create(name: "Fun Music Night 2", creator: user1)
+setlist1.set_entries.create(arrangement: arrangement1)
+setlist1.set_entries.create(arrangement: arrangement4)
+setlist1.set_entries.create(arrangement: arrangement5)
+setlist1.set_entries.create(arrangement: arrangement7)
 
-setlist1.arrangements << arrangement2
-setlist1.arrangements << arrangement3
-setlist1.arrangements << arrangement6
-setlist1.arrangements << arrangement7
+setlist2 = team1.setlists.create(name: "Fun Music Night 2", creator: user1)
+
+setlist2.set_entries.create(arrangement: arrangement2)
+setlist2.set_entries.create(arrangement: arrangement3)
+setlist2.set_entries.create(arrangement: arrangement6)
+setlist2.set_entries.create(arrangement: arrangement7)

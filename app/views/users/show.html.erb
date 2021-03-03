@@ -7,16 +7,30 @@
         <article class="my_arrangements_list">
             <h2>My Arrangements:</h2>
             <br>
-            <% @user.owned_arrangements.each do |arrangement| %>
-                <%= render partial: 'arrangements/arrangement_card', :locals => { user: @user, arrangement: arrangement } %>
+            <% @user.owned_arrangements.order(:name).each do |arrangement| %>
+                <%= render partial: 'arrangements/arrangement_card', 
+                           :locals => { 
+                                user: @user, 
+                                arrangement: arrangement, 
+                                kind: 'arr_list',
+                                set_entry: SetEntry.new
+                           } 
+                %>
             <% end %>
         </article>
         <article class="my_setlists_list">
             <h2>My Setlist:</h2>
                 <%= collection_select :setlist, :id, @user.created_setlists.all, :id, :name %>
-            <div id="setlist_list">
-                <% @setlist.arrangements.each do |arrangement| %>
-                    <%= render partial: 'arrangements/arrangement_card', :locals => { user: @user, arrangement: arrangement } %>
+            <div data-controller="drag" data-drag-url="/set_entries/:id/move" id="setlist_list">
+                <% @setlist.set_entries.order(position: :asc).each do |set_entry| %>
+                    <%= render partial: 'arrangements/arrangement_card', 
+                               :locals => { 
+                                    user: @user, 
+                                    arrangement: set_entry.arrangement, 
+                                    kind: 'setlist_list',
+                                    set_entry: set_entry
+                               } 
+                    %>
                 <% end %>
             </div>
             <div id="setlist_add">
@@ -30,31 +44,43 @@
 </main>
 
 <script>
-    function accordionAction(object) {
-        details = object.nextElementSibling.classList.toggle("active")
-    }
+    // $(document).on('click', '.accordion_title', function() {
+    //     $(this).parent().next().toggleClass("active")
+    // })
 
-    $(document).ready(function() {
-        $("#setlist_id").on('change', function(){
-            $.ajax({
-                url: "/populate_setlist",
-                type: "GET",
-                data: {setlist_id: $(this).val()}
-            })
-        });
-    })
+    $(document).on('change', "#setlist_id", function(){
+        $.ajax({
+            url: "/populate_setlist",
+            type: "GET",
+            data: {setlist_id: $(this).val()}
+        })
+    });
 
-    $(document).ready(function() {
-        $(".add_to_setlist").on('click', function(event){
-            event.stopImmediatePropagation();
-            $.ajax({
-                url: "/add_to_setlist",
-                type: "GET",
-                data: {
-                    arrangement_id: $(this).children(".arrangement_id_span").text(),
-                    setlist_id: $("#setlist_id").val()
-                }
-            })
-        });
-    })
+    $(document).on('click', ".add_to_setlist", function(event){
+        if ($("#setlist_list").children().length == 0) {
+            position = 0
+        } else {
+            position = $("#setlist_list").children().last().data().id
+        }
+
+        $.ajax({
+            url: "/set_entries",
+            type: "POST",
+            data: {
+                arrangement_id: $(this).children(".arrangement_id_span").text(),
+                setlist_id: $("#setlist_id").val(),
+                position: position
+            }
+        })
+    });
+
+    $(document).on('click', ".remove_from_setlist", function(event){
+        $.ajax({
+            url: "/set_entries",
+            type: "DELETE",
+            data: {
+                set_entry_id: $(this).children('.set_entry_id_span').text()
+            }
+        })
+    });
 </script>
