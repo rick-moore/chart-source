@@ -4,8 +4,12 @@ class SetEntriesController < ApplicationController
     
     def create
         @set_entry = @setlist.set_entries.create(arrangement: @arrangement)
-        @position = SetEntry.find(params[:position]).position.to_i + 1 || 1
-        @set_entry.insert_at(@position)
+        if params[:last_arrangement_id].to_i != 0
+            @position = SetEntry.find(params[:last_arrangement_id]).position.to_i 
+        else 
+            @position = 0
+        end
+        @set_entry.insert_at(@position + 1)
     end
 
     def destroy

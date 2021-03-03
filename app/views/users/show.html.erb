@@ -4,21 +4,25 @@
         <h2>You are logged in as: <%= current_user.username %></h2>
     </section>
     <section class="dashboard_body">
-        <article class="my_arrangements_list">
+        <article class="my_arrangements">
             <h2>My Arrangements:</h2>
             <br>
-            <% @user.owned_arrangements.order(:name).each do |arrangement| %>
-                <%= render partial: 'arrangements/arrangement_card', 
-                           :locals => { 
-                                user: @user, 
-                                arrangement: arrangement, 
-                                kind: 'arr_list',
-                                set_entry: SetEntry.new
-                           } 
-                %>
-            <% end %>
+            <label for="arr_search">Search:</label>
+            <input type="text" id="arr_search">
+            <div id="arrangement_list">
+                <% @user.owned_arrangements.order(:name).each do |arrangement| %>
+                    <%= render partial: 'arrangements/arrangement_card', 
+                               :locals => { 
+                                    user: @user, 
+                                    arrangement: arrangement, 
+                                    kind: 'arr_list',
+                                    set_entry: SetEntry.new
+                               } 
+                    %>
+                <% end %>
+            </div>
         </article>
-        <article class="my_setlists_list">
+        <article class="my_setlists">
             <h2>My Setlist:</h2>
                 <%= collection_select :setlist, :id, @user.created_setlists.all, :id, :name %>
             <div data-controller="drag" data-drag-url="/set_entries/:id/move" id="setlist_list">
@@ -44,9 +48,21 @@
 </main>
 
 <script>
-    // $(document).on('click', '.accordion_title', function() {
-    //     $(this).parent().next().toggleClass("active")
-    // })
+    $(document).on('click', '.accordion_title', function() {
+        $(this).parent().next().toggleClass("active")
+    })
+
+    $(document).on('input', "#arr_search", function(){
+        arrs = $('#arrangement_list').children()
+        for (i of arrs) {
+            text = $(i).find(".title_span").first().text().toLowerCase()
+            if (!text.includes($("#arr_search").val().toLowerCase())) {
+                $(i).hide()
+            } else {
+                $(i).show()
+            }
+        }
+    });    
 
     $(document).on('change', "#setlist_id", function(){
         $.ajax({
@@ -58,9 +74,9 @@
 
     $(document).on('click', ".add_to_setlist", function(event){
         if ($("#setlist_list").children().length == 0) {
-            position = 0
+            last_arrangement_id = 0
         } else {
-            position = $("#setlist_list").children().last().data().id
+            last_arrangement_id = $("#setlist_list").children().last().data().id
         }
 
         $.ajax({
@@ -69,7 +85,7 @@
             data: {
                 arrangement_id: $(this).children(".arrangement_id_span").text(),
                 setlist_id: $("#setlist_id").val(),
-                position: position
+                last_arrangement_id: last_arrangement_id
             }
         })
     });
