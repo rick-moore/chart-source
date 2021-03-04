@@ -5,4 +5,8 @@ class Song < ApplicationRecord
     has_many :charts, through: :arrangements
     has_many :arrangers, through: :arrangements
     has_many :genres, through: :arrangements
+
+    def self.unique_by_title
+        order(name: :asc).uniq
+    end
 end

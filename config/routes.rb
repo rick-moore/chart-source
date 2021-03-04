@@ -10,7 +10,7 @@ Rails.application.routes.draw do
   delete '/set_entries', to: 'set_entries#destroy'
   patch '/set_entries/:id/move', to: 'set_entries#move'
   
-  resources :users do
+  resources :users, shallow: true do
     resources :arrangers
     resources :arrangements
     resources :songs

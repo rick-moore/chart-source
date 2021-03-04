@@ -8,6 +8,7 @@ class Arrangement < ApplicationRecord
     has_many :genres, through: :genre_tags
     has_many :set_entries
     has_many :setlists, through: :set_entries
+    accepts_nested_attributes_for :song, :artist, :arranger
 
     def belongs_to_user(user) 
         owner == user

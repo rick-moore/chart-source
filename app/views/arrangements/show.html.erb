@@ -9,6 +9,27 @@
                         user: @user
                    } 
         %>
+        <button>
+            <h3><%= link_to "See All Arrangements of " + @arrangement.song.name, song_path(@arrangement.song) %></h3>
+        </button>
+        <br>
+        <br>
+        <button>
+            <h3><%= link_to "See All Songs by " + @arrangement.song.artist.name, artist_path(@arrangement.song.artist) %></h3>
+        </button>
+        <br>
+        <br>
+        <button>
+            <h3><%= link_to "See All Arrangements by " + @arrangement.arranger.name, arranger_path(@arrangement.arranger) %></h3>
+        </button>
+        <br>
+        <br>
+        <button>
+            <h3><%= link_to "Edit this Arrangement ", edit_arrangement_path(@arrangement) %></h3>
+        </button>
+        <br>
+        <br>
+        <%= button_to "Delete this Arrangement ", @arrangement, :method => :delete %>
     </section>
     <section class="show_arrangement_footer">
 

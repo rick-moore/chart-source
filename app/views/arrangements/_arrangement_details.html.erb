@@ -20,16 +20,3 @@
     <% end %>
 </ul>
 <br>
-<button>
-    <h3><%= link_to "See All Arrangements of " + arrangement.song.name, user_song_path(user, arrangement.song) %></h3>
-</button>
-<br>
-<br>
-<button>
-    <h3><%= link_to "See All Songs by " + arrangement.song.artist.name, user_artist_path(user, arrangement.song.artist) %></h3>
-</button>
-<br>
-<br>
-<button>
-    <h3><%= link_to "See All Arrangements by " + arrangement.arranger.name, user_arranger_path(user, arrangement.arranger) %></h3>
-</button>

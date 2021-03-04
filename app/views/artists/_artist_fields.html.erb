@@ -1,0 +1,9 @@
+<%= f.fields_for :artist do |builder| %>
+    <%= builder.label :name, 'Artist' %><br>
+    <%= builder.text_field :name, list: 'artist-name' %>
+    <datalist id='artist-name'>
+    <% user.unique_artists.each do |artist| %>
+        <option value="<%= artist.name %>"></option>
+    <% end %>
+    </datalist>
+<% end %>

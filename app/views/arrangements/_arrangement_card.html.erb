@@ -1,10 +1,10 @@
 <div data-id="<%= set_entry.id %>" class="arrangement_card">
+    <% arrangement = set_entry.arrangement unless !!arrangement %>
     <div class="accordion">
         <div class="title_line">
             <div class="accordion_title">
                 <span class="title_span">
-                    <%= arrangement.song.name %> - 
-                    <%= arrangement.song.artist.name %>
+                    <%= title_details_for arrangement %>
                 </span>
             </div>
             <div class="control">
@@ -22,11 +22,19 @@
                             -
                         </button>
                     </span>
+                <% elsif kind == "arr_list_no_details" %>
+                <span>    
+                    <button class="view details">
+                        <%= link_to "details", user_arrangement_path(arrangement.owner, arrangement) %>
+                    </button>
+                </span>
                 <% end %>
             </div>
         </div>
         <div class="accordion_details">
-            <%= render partial: "arrangements/arrangement_details", :locals => {user: @user, arrangement: arrangement} %>
+            <%= render :partial => "arrangements/arrangement_details", 
+                       :locals => {user: @user, arrangement: arrangement} 
+            %>
         </div>
     </div>
 </div>

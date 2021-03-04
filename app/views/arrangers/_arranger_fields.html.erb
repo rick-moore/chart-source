@@ -1,0 +1,9 @@
+<%= f.fields_for :arranger do |builder| %>
+    <%= builder.label :name, 'Arranger' %><br>
+    <%= builder.text_field :name, list: 'arranger-name' %>
+    <datalist id='arranger-name'>
+    <% user.unique_arrangers.each do |arranger| %>
+        <option value="<%= arranger.name %>"></option>
+    <% end %>
+    </datalist>
+<% end %>

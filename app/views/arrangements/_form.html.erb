@@ -1,0 +1,15 @@
+<%= form_for :arrangement do |f| %>
+    <%= render :partial => 'songs/song_fields', :locals => {f: f, user: @user}%>
+    <br><br>
+    <%= render :partial => 'artists/artist_fields', :locals => {f: f, user: @user}%>
+    <br><br>
+    <%= render :partial => 'arrangers/arranger_fields', :locals => {f: f, user: @user}%>
+    <br><br>
+    <%= f.label :key, "Key" %><br>    
+    <%= f.text_field :tempo %>
+    <br><br>
+    <%= f.label :tempo, "Tempo (BPM)" %><br>    
+    <%= f.text_field :tempo %>
+    <br><br>
+    <%= f.submit "Create Arrangement" %>
+<% end %> 

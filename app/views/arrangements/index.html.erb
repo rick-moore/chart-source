@@ -1,0 +1,20 @@
+<main class="container">
+    <section class="arrangements_index_header">
+        <h1>All Arrangements for <%= @user.username %></h1>
+    </section>
+    <section class="arrangements_index_body">
+        <%= render :collection => @arrangements.order(:name), 
+                   :partial => 'arrangements/arrangement_card', 
+                   :as => :arrangement,
+                   :locals => { 
+                        user: @user, 
+                        kind: 'arr_list_no_details',
+                        set_entry: SetEntry.new
+                   } 
+        %>
+    </section>
+    <section class="arrangements_index_footer">
+    
+    </section>
+</main>
+

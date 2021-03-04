@@ -10,32 +10,29 @@
             <label for="arr_search">Search:</label>
             <input type="text" id="arr_search">
             <div id="arrangement_list">
-                <% @user.owned_arrangements.order(:name).each do |arrangement| %>
-                    <%= render partial: 'arrangements/arrangement_card', 
-                               :locals => { 
-                                    user: @user, 
-                                    arrangement: arrangement, 
-                                    kind: 'arr_list',
-                                    set_entry: SetEntry.new
-                               } 
-                    %>
-                <% end %>
+                <%= render :collection => @user.owned_arrangements.order(:name), 
+                           :partial => 'arrangements/arrangement_card', 
+                           :as => :arrangement,
+                           :locals => { 
+                                user: @user, 
+                                kind: 'arr_list',
+                                set_entry: SetEntry.new
+                           } 
+                %>
             </div>
         </article>
         <article class="my_setlists">
             <h2>My Setlist:</h2>
-                <%= collection_select :setlist, :id, @user.created_setlists.all, :id, :name %>
+            <%= collection_select :setlist, :id, @user.created_setlists.all, :id, :name %>
             <div data-controller="drag" data-drag-url="/set_entries/:id/move" id="setlist_list">
-                <% @setlist.set_entries.order(position: :asc).each do |set_entry| %>
-                    <%= render partial: 'arrangements/arrangement_card', 
-                               :locals => { 
-                                    user: @user, 
-                                    arrangement: set_entry.arrangement, 
-                                    kind: 'setlist_list',
-                                    set_entry: set_entry
-                               } 
-                    %>
-                <% end %>
+                <%= render :collection => @setlist.set_entries.order(position: :asc),
+                            :partial => 'arrangements/arrangement_card',
+                            :as => :set_entry, 
+                            :locals => { 
+                                user: @user, 
+                                kind: 'setlist_list'
+                            } 
+                %>
             </div>
             <div id="setlist_add">
                 <%= link_to 'New Setlist', new_user_setlist_path(@user), remote: true %>
@@ -43,7 +40,7 @@
         </article>
     </section>
     <section class="dashboard_footer">
-    
+        <%= link_to "Manage Arrangements", user_arrangements_path(@user) %>
     </section>
 </main>
 
