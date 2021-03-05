@@ -1,6 +1,8 @@
 class Artist < ApplicationRecord
-    has_many :songs
     belongs_to :owner, :class_name => "User"
+    has_many :arrangements
+    has_many :songs, through: :arrangements
+
 
     def self.unique_by_name
         order(name: :asc).uniq

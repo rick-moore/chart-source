@@ -10,7 +10,7 @@
             <label for="arr_search">Search:</label>
             <input type="text" id="arr_search">
             <div id="arrangement_list">
-                <%= render :collection => @user.owned_arrangements.order(:name), 
+                <%= render :collection => @user.owned_arrangements.sort_by_song_title, 
                            :partial => 'arrangements/arrangement_card', 
                            :as => :arrangement,
                            :locals => { 

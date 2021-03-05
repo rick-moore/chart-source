@@ -1,4 +1,5 @@
-<%= f.fields_for :song do |builder| %>
+<%= f.fields_for :song_attributes do |builder| %>
+    <%= builder.hidden_field :user_id, :value => user.id %>
     <%= builder.label :name, 'Song Title' %><br>
     <%= builder.text_field :name, list: 'song-title' %>
     <datalist id='song-title'>

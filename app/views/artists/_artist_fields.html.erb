@@ -1,4 +1,5 @@
-<%= f.fields_for :artist do |builder| %>
+<%= f.fields_for :artist_attributes do |builder| %>
+    <%= builder.hidden_field :user_id, :value => user.id %>
     <%= builder.label :name, 'Artist' %><br>
     <%= builder.text_field :name, list: 'artist-name' %>
     <datalist id='artist-name'>

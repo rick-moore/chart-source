@@ -1,9 +1,11 @@
-<h2><%= link_to song.artist.name, user_artist_path(user, song.artist)%></h2>
+<% song.artists.each do |artist| %>
+    <h2><%= link_to artist.name, artist %></h2>
+<% end %>
 <h2>Arrangements: <%= song.arrangements.count %></h2>
 <ul>
     <% song.arrangements.each do |arrangement| %>
         <li>
-            <%= link_to arrangement.arranger.name, user_arrangement_path(user, arrangement) %>
+            <%= link_to arrangement.arranger.name, arrangement %>
         </li>
     <% end %>
 </ul>

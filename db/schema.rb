@@ -13,11 +13,12 @@
 ActiveRecord::Schema.define(version: 2021_02_27_121544) do
 
   create_table "arrangements", force: :cascade do |t|
+    t.integer "owner_id"
     t.integer "song_id"
     t.integer "arranger_id"
+    t.integer "artist_id"
     t.string "key"
     t.integer "tempo"
-    t.integer "owner_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
@@ -83,7 +84,6 @@ ActiveRecord::Schema.define(version: 2021_02_27_121544) do
 
   create_table "songs", force: :cascade do |t|
     t.string "name"
-    t.integer "artist_id"
     t.integer "owner_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false

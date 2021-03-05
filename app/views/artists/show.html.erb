@@ -6,11 +6,11 @@
         <h2>Songs and Arrangements:</h2>
         <ul>
             <% @artist.songs.each do |song| %>
-                <li><%= link_to song.name, user_song_path(@user, song) %></li>
+                <li><%= link_to song.name,  song %></li>
                 <h3>Arrangements:</h3>
                 <ul>
                     <% song.arrangements.each do |arrangement| %>
-                        <li><%= link_to arrangement.arranger.name, user_arranger_path(@user, arrangement.arranger) %></li>
+                        <li><%= link_to arrangement.arranger.name, arrangement.arranger %></li>
                     <% end %>
                 </ul>
             <% end %>

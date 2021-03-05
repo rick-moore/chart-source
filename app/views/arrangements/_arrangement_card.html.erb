@@ -25,7 +25,7 @@
                 <% elsif kind == "arr_list_no_details" %>
                 <span>    
                     <button class="view details">
-                        <%= link_to "details", user_arrangement_path(arrangement.owner, arrangement) %>
+                        <%= link_to "details", arrangement_path(arrangement) %>
                     </button>
                 </span>
                 <% end %>

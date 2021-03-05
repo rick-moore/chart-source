@@ -134,3 +134,13 @@ button a {
     border-radius: 50%;
     cursor: pointer;
 }
+
+/* NEW ARRANGEMENT PAGE  */
+
+.tag_span {
+    background: white;
+    border: none;
+    margin: 0 5px;
+    padding: 0 10px;
+    border-radius: 20px;
+}

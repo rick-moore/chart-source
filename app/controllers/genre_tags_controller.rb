@@ -1,0 +1,2 @@
+class GenreTagsController < ApplicationController
+end

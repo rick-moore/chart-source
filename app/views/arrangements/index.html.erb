@@ -3,7 +3,7 @@
         <h1>All Arrangements for <%= @user.username %></h1>
     </section>
     <section class="arrangements_index_body">
-        <%= render :collection => @arrangements.order(:name), 
+        <%= render :collection => @arrangements.sort_by_song_title, 
                    :partial => 'arrangements/arrangement_card', 
                    :as => :arrangement,
                    :locals => { 
@@ -14,7 +14,8 @@
         %>
     </section>
     <section class="arrangements_index_footer">
-    
+        <%= link_to "Create a New Arrangement", new_user_arrangement_path(@user) %>
+        <%= link_to "Back To Dashboard", @user %>
     </section>
 </main>
 
