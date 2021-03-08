@@ -1,0 +1,20 @@
+<main class="container">
+    <section class="show_chart_header">
+        <h1><%= @chart.instrument %> Chart</h1>
+        <h2>Arranged by <%= @chart.arrangement.arranger.name %> </h2>
+    </section>
+    <section class="show_chart_body">
+        <h3>Song: <%= @chart.arrangement.song.name %></h3>
+        <h3>Artist: <%= @chart.arrangement.artist.name %></h3>
+        <% if @chart.chart_pdf.attached? %>
+            <%= cl_image_tag(@chart.chart_pdf.key, :secure=>true, :width=>200, :crop=>"fill", :format=>:jpg) %>
+        <% end %>
+        <br><br>
+        <button>
+            <%= link_to "Edit This Chart", edit_chart_path(@chart) %> 
+        </button>
+    </section>
+    <section class="show_chart_footer">
+    
+    </section>
+</main>

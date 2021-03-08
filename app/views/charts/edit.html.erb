@@ -1,0 +1,27 @@
+<main class="container">
+    <section class="edit_chart_header">
+        <h1><%= @chart.arrangement.song.name %></h1>
+        <h2><%= @chart.arrangement.artist.name %></h2>
+        <h2>Arr. <%= @chart.arrangement.arranger.name %></h2>
+    </section>
+    <section class="edit_chart_body">
+    <%= form_for @chart do |f| %>
+        <%= f.label :instrument, "Instrument" %>
+        <br>
+        <%= f.text_field :instrument %>
+        <br><br>
+        <% if @chart.chart_pdf.attached? %>
+            <%= cl_image_tag @chart.chart_pdf.key, :width=>150, :crop=>"fill", :format => :jpg %>
+        <% end %>
+        <br>
+        <%= f.label :chart_pdf, "Select Chart" %>
+        <br>
+        <%= f.file_field :chart_pdf %>
+        <br><br>
+        <%= f.submit "Update Chart"%>
+    <% end %>
+    </section>
+    <section class="edit_chart_footer">
+    
+    </section>
+</main>
