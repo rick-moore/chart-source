@@ -1,0 +1,28 @@
+<div class="share_setlist_form">
+    <%= form_with(model: setlist_share, url: "/setlist_shares", local: false) do |form| %>
+        <% if setlist_share.errors.any? %>
+            <div class="error_explanation">
+                <h2><%= pluralize(setlist_share.errors.count, "error") %> prohibited this setlist from being shared:</h2>
+
+                <ul>
+                    <% setlist_share.errors.full_messages.each do |message| %>
+                        <li>
+                            <%= message %>
+                        </li>
+                    <% end %>
+                </ul>
+            </div>
+        <% end %>
+        <div class="field">
+            <%= form.hidden_field :team_id, value: team.id %>
+        </div>
+
+        <div class="field">
+            <%= collection_select :setlist_share, :setlist_id, user.created_setlists, :id, :name %>
+        </div>
+
+        <div class="actions">
+            <%= form.submit "Share Setlist" %>
+        </div>
+    <% end %>
+</div>

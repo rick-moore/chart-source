@@ -1,0 +1,31 @@
+<main class="container">
+    <section class="edit_team_header">
+        <h1>Edit Team</h1>
+    </section>
+    <section class="edit_team_body">
+        <%= form_for @team do |f| %>
+            <%= f.label :name %><br>
+            <%= f.text_field :name %><br><br>
+            <%= f.submit "Update Team Settings" %>
+        <% end %>
+        <div id="members_list">
+            <%= render :collection => @members, 
+                        :partial => 'member_card',
+                        :as => :member,
+                        :locals => {kind: 'edit_team', team: @team} 
+            %>
+        </div>
+        <div id="add_team_member">
+            <button type="button" id="add_team_member_button">Add Team Member</button>
+        </div>
+    </section>
+    <section class="edit_team_footer">
+    
+    </section>
+</main>
+
+<script>
+    $(document).on('click', '#add_team_member_button', function() {
+        $(this).hide().parent().append("<%= j render partial: 'memberships/form', :locals => {membership: Membership.new} %>")
+    })
+</script>

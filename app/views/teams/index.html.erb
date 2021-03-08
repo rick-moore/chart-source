@@ -1,0 +1,14 @@
+<main class="container">
+    <section class="team_index_header">
+        <h1>My Teams</h1>
+    </section>
+    <section class="team_index_body">
+        <h2>Teams I Lead:</h2>
+        <% @led_teams.each do |team| %>
+            <%= render :partial => 'team_card', :locals => {team: team} %>
+        <% end %>
+    </section>
+    <section class="team_index_footer">
+    
+    </section>
+</main>

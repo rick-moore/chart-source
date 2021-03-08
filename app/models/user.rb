@@ -15,6 +15,10 @@ class User < ApplicationRecord
         User.find_by(username: params) || User.find_by(email: params)
     end
 
+    def membership_id(team)
+        Membership.find_by(team_id: team.id, user_id: self.id).id
+    end
+
     def unique_songs
         songs.unique_by_title
     end

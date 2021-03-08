@@ -1,3 +1,18 @@
 <main class="container">
-    <h1><%= @setlist.name %></h1>
+    <section class="show_setlist_header">
+        <h1><%= @setlist.name %></h1>
+    </section>
+    <section class="show_setlist_body">
+        <%= render :collection => @setlist.set_entries.sort_by_position,
+                   :partial => 'arrangements/arrangement_card',
+                   :as => :set_entry, 
+                   :locals => { 
+                        user: @user, 
+                        kind: 'team_setlist'
+                   } 
+        %>
+    </section>
+    <section class="show_setlist_footer">
+        <button type="button">Placeholder for Download Button</button>
+    </section>
 </main>

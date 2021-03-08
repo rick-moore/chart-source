@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_03_05_180054) do
+ActiveRecord::Schema.define(version: 2021_03_08_103821) do
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -89,6 +89,7 @@ ActiveRecord::Schema.define(version: 2021_03_05_180054) do
   create_table "memberships", force: :cascade do |t|
     t.integer "team_id"
     t.integer "user_id"
+    t.string "display_name"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
@@ -101,9 +102,15 @@ ActiveRecord::Schema.define(version: 2021_03_05_180054) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  create_table "setlist_shares", force: :cascade do |t|
+    t.integer "team_id"
+    t.integer "setlist_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
   create_table "setlists", force: :cascade do |t|
     t.string "name"
-    t.integer "team_id"
     t.integer "creator_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false

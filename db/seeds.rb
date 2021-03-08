@@ -6,7 +6,7 @@ user1 = User.create(username: "Rick", email: "rick@email.com", password: "rick",
 user2 = User.create(username: "Connor", email: "connor@email.com", password: "connor", instrument: "Drums")
 user3 = User.create(username: "Emmet", email: "emmet@email.com", password: "emmet", instrument: "Guitar")
 user4 = User.create(username: "Julian", email: "julian@email.com", password: "julian", instrument: "Bass")
-user5 = User.create(username: "Stephan", email: "stephan@email.com", password: "stephan", instrument: "Keyboard")
+user5 = User.create(username: "Stefan", email: "stefan@email.com", password: "stefan", instrument: "Keyboard")
 user6 = User.create(username: "Ish", email: "ish@email.com", password: "ish", instrument: "Trombone")
 user7 = User.create(username: "Alejo", email: "alejo@email.com", password: "alejo", instrument: "Trumpet")
 user8 = User.create(username: "Nicole", email: "nicole@email.com", password: "nicole", instrument: "Vocals")
@@ -14,13 +14,13 @@ user8 = User.create(username: "Nicole", email: "nicole@email.com", password: "ni
 ##### TEAMS #####
 team1 = user1.led_teams.create(name: "Glory Band")
 
-Membership.create(team_id: 1, user_id: 2)
-Membership.create(team_id: 1, user_id: 3)
-Membership.create(team_id: 1, user_id: 4)
-Membership.create(team_id: 1, user_id: 5)
-Membership.create(team_id: 1, user_id: 6)
-Membership.create(team_id: 1, user_id: 7)
-Membership.create(team_id: 1, user_id: 8)
+Membership.create(team_id: 1, user_id: 2, display_name: "Connor A.")
+Membership.create(team_id: 1, user_id: 3, display_name: "Emmet M.")
+Membership.create(team_id: 1, user_id: 4, display_name: "Julian B.")
+Membership.create(team_id: 1, user_id: 5, display_name: "Stefan N.")
+Membership.create(team_id: 1, user_id: 6, display_name: "Ismael C.")
+Membership.create(team_id: 1, user_id: 7, display_name: "Alejandro C.")
+Membership.create(team_id: 1, user_id: 8, display_name: "Nicole T.")
 
 ##### ARTISTS #####
 artist1 = user1.artists.create(name: "Michael Jackson")

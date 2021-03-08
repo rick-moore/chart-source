@@ -1,6 +1,6 @@
 <main class="container">
     <section class="arrangements_index_header">
-        <h1>All Arrangements for <%= @user.username %></h1>
+        <h1>All Arrangements for <%= @list_title %></h1>
     </section>
     <section class="arrangements_index_body">
         <%= render :collection => @arrangements.sort_by_song_title, 
@@ -14,8 +14,13 @@
         %>
     </section>
     <section class="arrangements_index_footer">
-        <%= link_to "Create a New Arrangement", new_user_arrangement_path(@user) %>
-        <%= link_to "Back To Dashboard", @user %>
+        <% if @user %>
+            <%= link_to "Create a New Arrangement", new_user_arrangement_path(@user) %>
+            <%= link_to "Back To Dashboard", @user %>
+        <% else %>
+            <%= link_to "Back To Team Home", team_path(@team) %>
+        <% end %>
+        
     </section>
 </main>
 

@@ -1,0 +1,4 @@
+$('#members_list').children().remove()
+$('#members_list').append('<%= j render :collection => @members, :partial => "teams/member_card", :as => :member, :locals => {kind: "edit_team", team: @team} %>')
+$('#add_team_member').children().remove()
+$('#add_team_member').append('<button type="button" id="add_team_member_button">Add Team Member</button>')

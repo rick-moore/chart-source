@@ -1,0 +1,17 @@
+<main class="container">
+    <section class="edit_membership_header">
+        <h1>Membership Settings for <%= @team.name %></h1>
+        <h2><%= @user.username %> - <%= @user.email %></h2>
+    </section>
+    <section class="edit_membership_body">
+        <%= form_for @membership do |f| %>
+            <%= f.label :display_name, "Pick Your Display Name For This Team:" %><br>
+            <%= f.text_field :display_name %>
+            <br><br>
+            <%= f.submit "Save Settings" %>
+        <% end %>
+    </section>
+    <section class="edit_membership_footer">
+    
+    </section>
+</main>

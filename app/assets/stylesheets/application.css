@@ -24,6 +24,7 @@
     min-height: 100vh;
     height: 100%;
     width: 100%;
+    padding-top: 100px;
     background: linear-gradient(45deg, rgb(183, 241, 245), rgb(166, 138, 245));
     display: flex;
     flex-direction: column;
@@ -158,4 +159,28 @@ button a {
     margin: 0 5px;
     padding: 0 10px;
     border-radius: 20px;
+}
+
+/* TEAM INDEX */
+.team_card {
+    background:rgba(66, 65, 77, 0.158);
+    border-radius: 10px;
+    padding: 15px;
+}
+
+.show_team_body {
+    width: 90%;
+    max-width: 800px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: flex-start;
+}
+
+.show_team_body #team_setlists, 
+.show_team_body #team_members_list {
+    width: 45%;
+    background:rgba(66, 65, 77, 0.158);
+    border-radius: 10px;
+    padding: 10px;
 }

@@ -1,0 +1,41 @@
+<main class="container">
+    <section class="show_team_header">
+        <h1><%= @team.name %></h1>
+    </section>
+    <section class="show_team_body">
+        <div id="team_members_list">
+            <h2>Team Members:</h2>
+            <br>
+            <%= render :collection => @team.members, 
+                       :partial => "member_card", 
+                       :as => :member, 
+                       :locals => {team: @team, kind: 'team_home'} 
+            %>
+        </div>
+        <div id="team_setlists">
+            <h2>Setlists</h2>
+            <br>
+            <div id="team_setlists_list">
+                <%= render :collection => @team.setlists, 
+                        :partial => "setlist_card", 
+                        :as => :setlist, 
+                        :locals => {team: @team} 
+                %>
+            </div>
+            <div id="share_setlist">
+                <%= link_to "Share a Setlist", new_team_setlist_share_path(@team), remote: true %>
+            </div>
+        </div>
+    </section>
+    <section class="show_team_footer">
+        <%= link_to "Show Team Arrangements", team_arrangements_path(@team) %>
+        <%= link_to "Edit Membership", edit_membership_path(@membership) %>
+        <% if current_user == @team.leader %>
+            <%= link_to "Edit Team Settings", edit_team_path(@team) %>
+        <% end %>
+
+    </section>
+</main>
+
+<script>
+</script>

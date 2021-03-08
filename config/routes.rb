@@ -17,9 +17,17 @@ Rails.application.routes.draw do
     resources :songs
     resources :artists
     resources :setlists
+    resources :teams, only: :index
   end
 
-    resources :charts
+  resources :teams do
+    resources :arrangements, only: %i[ index show ]
+    resources :setlist_shares, only: %i[ new ]
+  end
+
+  resources :setlist_shares, only: %i[ create ]
+  resources :charts
+  resources :memberships, only: %i[ destroy create edit update ]
 
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

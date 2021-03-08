@@ -1,6 +1,7 @@
 <div class="nav_controls">
     <% if logged_in? %>
-        <%= link_to "My Arrangements", user_arrangements_path(current_user) %>
+        <%= link_to "Team Portal", user_teams_path(current_user) %>
+        <%= link_to "Arrangements", user_arrangements_path(current_user) %>
         <%= link_to "Dashboard", current_user %>
         <%= link_to "Log Out", logout_path %>
     <% else %>

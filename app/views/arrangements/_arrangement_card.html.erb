@@ -28,6 +28,12 @@
                         <%= link_to "details", arrangement_path(arrangement) %>
                     </button>
                 </span>
+                <% elsif kind == "team_setlist" %>
+                <span>    
+                    <button class="download_arrangement">
+                        <span>Download</span>
+                    </button>
+                </span>
                 <% end %>
             </div>
         </div>

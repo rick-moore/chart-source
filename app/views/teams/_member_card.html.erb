@@ -1,0 +1,10 @@
+<div class="member_card">
+    <h2><%= display_name(member, team) %></h2>
+    <h3><%= member.instrument %></h3>
+    <h3><%= member.email %></h3>
+    <% if kind == 'edit_team' %>
+        <%= button_to "Remove Member", membership_path(member.membership_id(team)), method: :delete, remote: true, data: {confirm: 'Are you Sure?'} %>
+    <% end %>
+    <br>
+    <br>
+</div>

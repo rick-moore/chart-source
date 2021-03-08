@@ -11,7 +11,15 @@ class Arrangement < ApplicationRecord
     scope :sort_by_song_title, -> {includes(:song).order('songs.name ASC')}
     
     def belongs_to_user(user) 
-        owner == user
+        owner == user 
+    end
+
+    def has_team_access(user)
+        access = false
+        user.teams.each do |team|
+            access = true if team.arrangements.include?(self)
+        end
+        access
     end
 
     def genre_attributes=(genre_attributes)

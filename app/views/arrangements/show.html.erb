@@ -9,27 +9,38 @@
                         user: @user
                    } 
         %>
-        <button>
-            <h3><%= link_to "See All Arrangements of " + @arrangement.song.name, song_path(@arrangement.song) %></h3>
-        </button>
-        <br>
-        <br>
-        <button>
-            <h3><%= link_to "See All Songs by " + @arrangement.artist.name, artist_path(@arrangement.artist) %></h3>
-        </button>
-        <br>
-        <br>
-        <button>
-            <h3><%= link_to "See All Arrangements by " + @arrangement.arranger.name, arranger_path(@arrangement.arranger) %></h3>
-        </button>
-        <br>
-        <br>
-        <button>
-            <h3><%= link_to "Edit this Arrangement ", edit_arrangement_path(@arrangement) %></h3>
-        </button>
-        <br>
-        <br>
-        <%= button_to "Delete this Arrangement ", @arrangement, :method => :delete %>
+        <% if current_user == @arrangement.owner %>
+            <button>
+                <h3><%= link_to "See All Arrangements of " + @arrangement.song.name, song_path(@arrangement.song) %></h3>
+            </button>
+            <br>
+            <br>
+            <button>
+                <h3><%= link_to "See All Songs by " + @arrangement.artist.name, artist_path(@arrangement.artist) %></h3>
+            </button>
+            <br>
+            <br>
+            <button>
+                <h3><%= link_to "See All Arrangements by " + @arrangement.arranger.name, arranger_path(@arrangement.arranger) %></h3>
+            </button>
+            <br>
+            <br>
+            <button>
+                <h3><%= link_to "Edit this Arrangement ", edit_arrangement_path(@arrangement) %></h3>
+            </button>
+            <br>
+            <br>
+            <%= button_to "Delete this Arrangement", @arrangement, :method => :delete %>
+            <br>
+            <button>
+                <h3><%= link_to "Back to My Arrangements", user_arrangements_path(current_user) %></h3>
+            </button>
+        <% end %>
+        <% if @team %>
+            <button>
+                <h3><%= link_to "Back to Team Arrangements", team_arrangements_path(@team) %></h3>
+            </button>
+        <% end %>
     </section>
     <section class="show_arrangement_footer">
 

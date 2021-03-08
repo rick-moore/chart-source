@@ -1,21 +1,35 @@
 class ArrangementsController < ApplicationController
     before_action :set_arrangement, only: %i[ show edit destroy ]
-    before_action :set_user, only: %i[ index new ] 
+    before_action :set_user, only:  :new 
 
     def index
-        if @user == current_user
-            @arrangements = @user.owned_arrangements
-            render 'arrangements/index'
+        if params[:team_id]
+            @team = Team.find_by(id: params[:team_id]) 
+            if @team && @team.is_member_or_leader?(current_user)
+                @arrangements = @team.arrangements
+                @list_title = @team.name
+                render 'arrangements/index'
+            else
+                redirect_to user_teams_path(current_user)
+            end
         else
-            redirect_to login_path
+            set_user
+            if @user == current_user
+                @arrangements = @user.owned_arrangements
+                @list_title = @user.username
+                render 'arrangements/index'
+            else
+                redirect_to login_path
+            end
         end
     end
     
     def show
-        if @arrangement.belongs_to_user(current_user)
+        @team = Team.find_by(id: params[:team_id])
+        if @arrangement.belongs_to_user(current_user) || @arrangement.has_team_access(current_user)
             render 'arrangements/show'
         else
-            redirect_to user_arrangements_path(current_user)
+            redirect_to current_user
         end
     end
 
