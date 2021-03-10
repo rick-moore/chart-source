@@ -5,3 +5,6 @@
     <%= f.password_field :password %><br><br>
     <%= f.submit "Login" %>
 <% end %>
+
+<p>Try <%= link_to 'Signing in with the Facebook strategy', '/auth/facebook', method: :post %>.</p>
+<p>Try <%= link_to 'Signing in with the Github strategy', '/auth/github', method: :post %>.</p>

@@ -23,7 +23,7 @@ class Arrangement < ApplicationRecord
     end
 
     def genre_attributes=(genre_attributes)
-        @user = User.find(genre_attributes[:user_id])
+        @user = User.find_by(id: genre_attributes[:user_id])
         genre_attributes[:names].split(',').each do |genre_name|
             if g = @user.genres.find_by(name: genre_name)
                 self.genres << g unless self.genres.include?(g)

@@ -23,6 +23,10 @@ gem 'jbuilder', '~> 2.7'
 gem 'bcrypt', '~> 3.1.7'
 
 gem 'cloudinary'
+gem 'omniauth'
+gem 'omniauth-github', github: 'omniauth/omniauth-github', branch: 'master'
+gem 'omniauth-rails_csrf_protection'
+gem 'thin'
 
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
@@ -63,3 +67,7 @@ end
 # gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 gem "acts_as_list", "~> 1.0"
+
+gem "dotenv-rails", "~> 2.7"
+
+gem "omniauth-facebook", "~> 8.0"

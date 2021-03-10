@@ -19,12 +19,16 @@
                                 set_entry: SetEntry.new
                            } 
                 %>
+                <% if !@user.owned_arrangements.any? %>
+                    <%= link_to "Add Your First Arrangement Here!", new_user_arrangement_path(@user) %>
+                <% end %>
             </div>
         </article>
         <article class="my_setlists">
             <h2>My Setlist:</h2>
             <%= collection_select :setlist, :id, @user.created_setlists.all, :id, :name %>
             <div data-controller="drag" data-drag-url="/set_entries/:id/move" id="setlist_list">
+            <% if @setlist %>
                 <%= render :collection => @setlist.set_entries.order(position: :asc),
                             :partial => 'arrangements/arrangement_card',
                             :as => :set_entry, 
@@ -33,6 +37,9 @@
                                 kind: 'setlist_list'
                             } 
                 %>
+            <% else %>
+                <p>Start a new setlist here!</p>
+            <% end %>
             </div>
             <div id="setlist_add">
                 <%= link_to 'New Setlist', new_user_setlist_path(@user), remote: true %>

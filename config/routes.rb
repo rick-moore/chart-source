@@ -10,7 +10,9 @@ Rails.application.routes.draw do
   post '/set_entries', to: 'set_entries#create'
   delete '/set_entries', to: 'set_entries#destroy'
   patch '/set_entries/:id/move', to: 'set_entries#move'
-  
+  get '/auth/github/callback', to: 'sessions#create'
+  get '/auth/facebook/callback', to: 'sessions#create'
+
   resources :users, shallow: true do
     resources :arrangers
     resources :arrangements

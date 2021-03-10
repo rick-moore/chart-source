@@ -8,16 +8,16 @@ class SetlistsController < ApplicationController
     end
 
     def new
-        @user = User.find(params[:user_id])
+        @user = User.find_by(id: params[:user_id])
         @setlist = Setlist.new
         respond_to do |format|
             format.js
         end
     end
-
+    
     def create
         @setlist = Setlist.new(setlist_params)
-        @user = User.find_by(params[:user_id])
+        @user = User.find_by(id: params[:user_id])
         @setlist.creator = @user
         @setlist.save
         respond_to do |format|

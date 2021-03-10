@@ -43,12 +43,13 @@ class ArrangementsController < ApplicationController
     end
 
     def create
-        @user = User.find_by(params[:user_id])
+        @user = User.find_by(id: params[:user_id])
         a = Arrangement.new(arrangement_params)
         a.owner = @user
         a.genres.each do |genre|
             @user.genres << genre
         end
+        byebug
         if a.save
             redirect_to a
         else
