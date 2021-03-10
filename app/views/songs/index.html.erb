@@ -1,0 +1,17 @@
+<main class="container">
+    <section class="songs_index_header">
+        <h1> All Songs for <%= current_user.username %></h1>
+    </section>
+    <section class="songs_index_body">
+        <ul>
+            <% @songs.each do |song| %>
+                <li>
+                    <%= link_to song.name, song %>
+                </li>
+            <% end %>
+        </ul>
+    </section>
+    <section class="songs_index_footer">
+    
+    </section>
+</main>

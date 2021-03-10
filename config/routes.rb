@@ -14,13 +14,12 @@ Rails.application.routes.draw do
   get '/auth/facebook/callback', to: 'sessions#create'
 
   resources :users, shallow: true do
-    resources :arrangers
     resources :arrangements
-    resources :songs
-    resources :artists
     resources :setlists
     resources :teams, only: :index
   end
+  
+  resources :arrangers, :artists, :songs, :genres, only: %i[ index show ]
 
   resources :teams do
     resources :arrangements, only: %i[ index show ]

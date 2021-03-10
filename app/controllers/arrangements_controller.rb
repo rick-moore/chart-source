@@ -36,6 +36,7 @@ class ArrangementsController < ApplicationController
     def new
         if logged_in?
             @arrangement = Arrangement.new
+            @arrangement.charts.build
             render 'arrangements/new'
         else
             redirect_to login_path    
@@ -91,7 +92,8 @@ class ArrangementsController < ApplicationController
                                                 :song_attributes => [:name, :user_id], 
                                                 :artist_attributes => [:name, :user_id], 
                                                 :arranger_attributes => [:name, :user_id], 
-                                                :genre_attributes => [:names, :user_id]
+                                                :genre_attributes => [:names, :user_id],
+                                                :charts_attributes => [:id, :instrument, :chart_pdf]
             )
         end
 end

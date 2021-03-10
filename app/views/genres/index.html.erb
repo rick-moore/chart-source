@@ -1,0 +1,15 @@
+<main class="container">
+    <section class="genres_index_header">
+        <h1> All Genres for <%= current_user.username %></h1>
+    </section>
+    <section class="genres_index_body">
+        <% @genres.each do |genre| %>
+            <h2>
+                <%= link_to genre.name, genre %>
+            </h2>
+        <% end %>
+    </section>
+    <section class="genres_index_footer">
+    
+    </section>
+</main>

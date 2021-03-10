@@ -1,4 +1,4 @@
-<%= form_for :arrangement, :url => user_arrangements_url do |f| %>
+<%= form_for @arrangement, :url => user_arrangements_url do |f| %>
     <%= render :partial => 'songs/song_fields', :locals => {f: f, user: @user}%>
     <br><br>
     <%= render :partial => 'artists/artist_fields', :locals => {f: f, user: @user}%>
@@ -22,6 +22,15 @@
         <%= text_field_tag 'genre_input' %>
         <button type="button" id="add_tag_button">Add Genre</button>
     </div>
+    <br><br>
+    <div class="new_charts">
+        <h2>Charts:</h2>
+        <%= f.fields_for :charts do |builder| %>
+            <%= render 'charts_fields', f: builder %>
+        <% end %>
+        <div>
+            <%= link_to_add_association "Add Chart", f, :charts %>
+        </div>
+    </div>
     <%= f.submit "Create Arrangement" %>
-
 <% end %> 

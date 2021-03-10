@@ -1,0 +1,15 @@
+<main class="container">
+    <section class="artists_index_header">
+        <h1> All Artists for <%= current_user.username %></h1>
+    </section>
+    <section class="artists_index_body">
+        <% @artists.each do |artist| %>
+            <h2>
+                <%= link_to artist.name, artist %>
+            </h2>
+        <% end %>
+    </section>
+    <section class="artists_index_footer">
+    
+    </section>
+</main>

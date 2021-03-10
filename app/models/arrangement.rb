@@ -9,6 +9,7 @@ class Arrangement < ApplicationRecord
     has_many :set_entries
     has_many :setlists, through: :set_entries
     scope :sort_by_song_title, -> {includes(:song).order('songs.name ASC')}
+    accepts_nested_attributes_for :charts
     
     def belongs_to_user(user) 
         owner == user 

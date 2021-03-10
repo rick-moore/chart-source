@@ -1,9 +1,25 @@
 <div class="nav_controls">
     <% if logged_in? %>
-        <%= link_to "Team Portal", user_teams_path(current_user) %>
-        <%= link_to "Arrangements", user_arrangements_path(current_user) %>
-        <%= link_to "Dashboard", current_user %>
-        <%= link_to "Log Out", logout_path %>
+        <div>
+            <%= link_to "Team Portal", user_teams_path(current_user) %>
+        </div>
+        <div id="arrangements_nav_wrapper">
+            <div>
+            <%= link_to "Arrangements", user_arrangements_path(current_user) %>
+            </div>
+            <div id="arrangements_nav_options" class="hidden">
+                <%= link_to "Songs", songs_path %>
+                <%= link_to "Artists", artists_path %>
+                <%= link_to "Arrangers", arrangers_path %>
+                <%= link_to "Genres", genres_path %>
+            </div>
+        </div>
+        <div>
+            <%= link_to "Dashboard", current_user %>
+        </div>
+        <div>
+            <%= link_to "Log Out", logout_path %>
+        </div>
     <% else %>
         <button>
             <%= link_to "Log In", login_path %>

@@ -33,16 +33,16 @@
 }
 
 nav {
-    height: 75px;
+    height: auto;
     width: 100%;
     position: fixed;
-    top: 0;
+    top: 30px;
     background: transparent;
     color: white;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    align-items: center;
+    align-items: flex-start;
 }
 
 
@@ -53,6 +53,28 @@ nav h2 {
 nav div{
     padding-right: 10px;
 }
+
+.nav_controls {
+    display: flex;
+    flex-direction: row;
+}
+
+.nav_controls #arrangements_nav_wrapper {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+}
+
+#arrangements_nav_options {
+    display: none;
+}
+
+.nav_controls #arrangements_nav_wrapper:hover > #arrangements_nav_options {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+} 
 
 .nav_controls a {
     font-size: 1.5em;

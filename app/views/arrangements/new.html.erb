@@ -3,7 +3,42 @@
         <h1>New Arrangement</h1>
     </section>
     <section class="new_arrangement_body">
-        <%= render 'form', :locals => { arrangement: @arrangement, user: @user } %>
+        <%= form_for @arrangement, :url => user_arrangements_url do |f| %>
+            <%= render :partial => 'songs/song_fields', :locals => {f: f, user: @user}%>
+            <br><br>
+            <%= render :partial => 'artists/artist_fields', :locals => {f: f, user: @user}%>
+            <br><br>
+            <%= render :partial => 'arrangers/arranger_fields', :locals => {f: f, user: @user}%>
+            <br><br>
+            <%= f.label :key, "Key" %><br>    
+            <%= f.text_field :key %>
+            <br><br>
+            <%= f.label :tempo, "Tempo (BPM)" %><br>    
+            <%= f.text_field :tempo %>
+            <br><br>
+            <input type='hidden' value='' id='genres_hidden' name='arrangement[genre_attributes][names]'>
+            <input type='hidden' value='<%= @user.id %>' name='arrangement[genre_attributes][user_id]'>
+            <div id='genre_list' name='arrangement[genre_list]'>
+                <% @arrangement.genres.each do |genre| %>
+                    <span class="tag_span"><%= genre.name %><button type='button' class='remove_tag'>X</button></span>
+                <% end %> 
+            </div>
+            <div id='add_genre_div'>
+                <%= text_field_tag 'genre_input' %>
+                <button type="button" id="add_tag_button">Add Genre</button>
+            </div>
+            <br><br>
+            <div class="new_charts">
+                <h2>Charts:</h2>
+                <%= f.fields_for :charts do |builder| %>
+                    <%= render 'chart_fields', f: builder %>
+                <% end %>
+                <div>
+                    <%= link_to_add_association "Add Chart", f, :charts %>
+                </div>
+            </div>
+            <%= f.submit "Create Arrangement" %>
+        <% end %> 
     </section>
     <section class="new_arrangement_footer">
     
@@ -31,7 +66,6 @@
     })
 
     $('#genre_list').on('DOMSubtreeModified', function() {
-        console.log('triggered')
         genres = $('#genre_list').children()
         genre_names = ''
         for (i of genres) {
@@ -39,4 +73,6 @@
         }
         $('#genres_hidden').val(genre_names.slice(0, -1))
     })
+
+
 </script>

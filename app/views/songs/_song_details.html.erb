@@ -1,7 +1,7 @@
 <% song.artists.each do |artist| %>
-    <h2><%= link_to artist.name, artist %></h2>
+    <p><%= link_to artist.name, artist %></p>
 <% end %>
-<h2>Arrangements: <%= song.arrangements.count %></h2>
+<h3>Arrangements: <%= song.arrangements.count %></h3>
 <ul>
     <% song.arrangements.each do |arrangement| %>
         <li>
@@ -9,3 +9,4 @@
         </li>
     <% end %>
 </ul>
+<br>

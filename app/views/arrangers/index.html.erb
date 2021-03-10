@@ -1,0 +1,15 @@
+<main class="container">
+    <section class="arrangers_index_header">
+        <h1> All Arrangers for <%= current_user.username %></h1>
+    </section>
+    <section class="arrangers_index_body">
+        <% @arrangers.each do |arranger| %>
+            <h2>
+                <%= link_to arranger.name, arranger %>
+            </h2>
+        <% end %>
+    </section>
+    <section class="arrangers_index_footer">
+    
+    </section>
+</main>

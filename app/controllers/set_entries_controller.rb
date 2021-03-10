@@ -1,8 +1,11 @@
 class SetEntriesController < ApplicationController
-    before_action :set_variables, only: :create
     after_action :js_action, only: %i[ create destroy ]
+    skip_before_action :verify_authenticity_token, only: %i[ create destroy ]
     
     def create
+        @setlist = Setlist.find(params[:setlist_id])
+        @arrangement = Arrangement.find(params[:arrangement_id])
+        @user = current_user
         @set_entry = @setlist.set_entries.create(arrangement: @arrangement)
         if params[:last_arrangement_id].to_i != 0
             @position = SetEntry.find(params[:last_arrangement_id]).position.to_i 
@@ -23,13 +26,7 @@ class SetEntriesController < ApplicationController
     end
 
 
-    private
-        def set_variables
-            @setlist = Setlist.find(params[:setlist_id])
-            @arrangement = Arrangement.find(params[:arrangement_id])
-            @user = current_user
-        end
-        
+    private        
         def js_action
             respond_to do |format|
                 format.js
