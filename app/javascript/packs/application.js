@@ -10,9 +10,11 @@ import "channels"
 require("jquery")
 require("@nathanvda/cocoon")
 require("packs/dashboard")
+require("packs/password")
 
 Rails.start()
 Turbolinks.start()
 ActiveStorage.start()
+require.context('../images', true)
 
 import "controllers"

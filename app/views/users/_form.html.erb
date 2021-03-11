@@ -1,0 +1,14 @@
+<%= form_for  @user, url: '/signup', method: 'POST' do |f| %>
+    <%= f.label :username, 'Username:' %>
+    <%= f.text_field :username %><br>
+    <%= f.label :email, 'Email:' %>
+    <%= f.text_field :email %><br>
+    <%= f.label :password, 'Password:' %>
+    <%= f.password_field :password, required: true, pattern: '.{3,}' %><br>
+    <%= f.label :password_confirmation, 'Confirm Password:' %>
+    <%= f.password_field :password_confirmation, required: true, pattern: '.{3,}' %>
+    <small class="error" id="password_match_error" style="display: none;">Passwords must match!</small> 
+    <small class="success" id="password_match_success" style="display: none;">Looks good!</small> 
+    <br>
+    <%= f.submit "Signup", class: "button" %>
+<% end %>

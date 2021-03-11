@@ -14,11 +14,11 @@
         %>
     </section>
     <section class="arrangements_index_footer">
-        <% if @user %>
-            <%= link_to "Create a New Arrangement", new_user_arrangement_path(@user) %>
-            <%= link_to "Back To Dashboard", @user %>
-        <% else %>
+        <% if @team %>
             <%= link_to "Back To Team Home", team_path(@team) %>
+        <% else %>
+            <%= link_to "Create a New Arrangement", new_arrangement_path %>
+            <%= link_to "Back To Dashboard", @user %>
         <% end %>
         
     </section>

@@ -29,11 +29,11 @@
     </section>
     <section class="show_team_footer">
         <%= link_to "Show Team Arrangements", team_arrangements_path(@team) %>
-        <%= link_to "Edit Membership", edit_membership_path(@membership) %>
         <% if current_user == @team.leader %>
             <%= link_to "Edit Team Settings", edit_team_path(@team) %>
+        <% else %>
+            <%= link_to "Edit Membership", edit_membership_path(@membership) %>
         <% end %>
-
     </section>
 </main>
 

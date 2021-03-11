@@ -1,5 +1,9 @@
 class User < ApplicationRecord
     has_secure_password
+    validates :username, :presence => true,
+                         :uniqueness => true
+    validates :password, :presence => true,
+                         :length => {minimum: 6}
     has_many :created_setlists, :class_name => "Setlist", :foreign_key => :creator_id
     has_many :memberships
     has_many :teams, through: :memberships
@@ -17,17 +21,5 @@ class User < ApplicationRecord
 
     def membership_id(team)
         Membership.find_by(team_id: team.id, user_id: self.id).id
-    end
-
-    def unique_songs
-        songs.unique_by_title
-    end
-    
-    def unique_artists
-        artists.unique_by_name
-    end
-
-    def unique_arrangers
-        arrangers.unique_by_name
     end
 end

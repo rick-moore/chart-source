@@ -1,11 +1,10 @@
 class TeamsController < ApplicationController
     before_action :set_team, only: %i[ show edit ]
-    before_action :set_user, only: :index
     
     def index
         if logged_in?
-            @teams = @user.teams
-            @led_teams = @user.led_teams
+            @teams = current_user.teams
+            @led_teams = current_user.led_teams
         else
             redirect_to login_path
         end
@@ -40,9 +39,5 @@ class TeamsController < ApplicationController
     private
         def set_team
             @team = Team.find(params[:id])
-        end
-
-        def set_user
-            @user = User.find_by(id: params[:user_id])
         end
 end

@@ -5,11 +5,15 @@
     </section>
     <section class="dashboard_body">
         <article class="my_arrangements">
-            <h2>My Arrangements:</h2>
-            <br>
-            <label for="arr_search">Search:</label>
-            <input type="text" id="arr_search">
-            <div id="arrangement_list">
+            <div class="title">
+                <h2>My Arrangements:</h2>
+                <%= link_to "Manage Arrangements", arrangements_path, class: "button" %>
+            </div>
+            <div class="title_search">
+                <label for="arr_search">Search:&nbsp</label>
+                <input type="text" id="arr_search">
+            </div>
+            <div class="scroll_list arrangement_list">
                 <%= render :collection => @user.owned_arrangements.sort_by_song_title, 
                            :partial => 'arrangements/arrangement_card', 
                            :as => :arrangement,
@@ -20,33 +24,36 @@
                            } 
                 %>
                 <% if !@user.owned_arrangements.any? %>
-                    <%= link_to "Add Your First Arrangement Here!", new_user_arrangement_path(@user) %>
+                    <%= link_to "Add Your First Arrangement Here!", new_arrangement_path %>
                 <% end %>
             </div>
         </article>
         <article class="my_setlists">
-            <h2>My Setlist:</h2>
-            <%= collection_select :setlist, :id, @user.created_setlists.all, :id, :name %>
-            <div data-controller="drag" data-drag-url="/set_entries/:id/move" id="setlist_list">
-            <% if @setlist %>
-                <%= render :collection => @setlist.set_entries.order(position: :asc),
-                            :partial => 'arrangements/arrangement_card',
-                            :as => :set_entry, 
-                            :locals => { 
-                                user: @user, 
-                                kind: 'setlist_list'
-                            } 
-                %>
-            <% else %>
-                <p>Start a new setlist here!</p>
-            <% end %>
+            <div class="title">
+                <h2>My Setlists:</h2>
+                <div id="setlist_add">
+                    <%= link_to 'New Setlist', new_setlist_path, remote: true, class: "button" %>
+                </div>
             </div>
-            <div id="setlist_add">
-                <%= link_to 'New Setlist', new_user_setlist_path(@user), remote: true %>
+            <div class="title_search">
+                <%= collection_select :setlist, :id, @user.created_setlists.all, :id, :name %>
+            </div>
+            <div class="scroll_list">
+                <div data-controller="drag" data-drag-url="/set_entries/:id/move" id="setlist_list">
+                    <% if @setlist %>
+                        <%= render :collection => @setlist.set_entries.order(position: :asc),
+                                    :partial => 'arrangements/arrangement_card',
+                                    :as => :set_entry, 
+                                    :locals => { 
+                                        user: @user, 
+                                        kind: 'setlist_list'
+                                    } 
+                        %>
+                    <% else %>
+                        <p>Start a new setlist here!</p>
+                    <% end %>
+                </div>
             </div>
         </article>
-    </section>
-    <section class="dashboard_footer">
-        <%= link_to "Manage Arrangements", user_arrangements_path(@user) %>
     </section>
 </main>

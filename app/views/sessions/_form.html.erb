@@ -1,10 +1,7 @@
 <%= form_with model: User, url: '/login', method: 'POST' do |f| %>
-    <%= f.label :username, 'Username or Email:' %><br>
-    <%= f.text_field :username %><br><br>
-    <%= f.label :password, 'Password:' %><br>
-    <%= f.password_field :password %><br><br>
-    <%= f.submit "Login" %>
+    <%= f.label :username, 'Username or Email:' %>
+    <%= f.text_field :username %><br>
+    <%= f.label :password, 'Password:' %>
+    <%= f.password_field :password %><br>
+    <%= f.submit "Login", class: "button" %>
 <% end %>
-
-<p>Try <%= link_to 'Signing in with the Facebook strategy', '/auth/facebook', method: :post %>.</p>
-<p>Try <%= link_to 'Signing in with the Github strategy', '/auth/github', method: :post %>.</p>

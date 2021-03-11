@@ -1,12 +1,13 @@
 <main class="container">
     <section class="login_header">
-        <h1>Log In</h1>
-        <br>
-        <%= render 'layouts/flash_field' %> 
+        <h1>Sign Up</h1>
+        <%= render :partial => 'layouts/error_field', :locals => {item: @user} %>
+        <br>    
     </section>
     <section class="login_body">
         <%= render 'form' %>
         <%= link_to (image_pack_tag "fb.png", width: 200), '/auth/facebook', method: :post %>
         <%= link_to (image_pack_tag "github.png", width: 200), '/auth/github', method: :post %>
     </section>
+    
 </main>

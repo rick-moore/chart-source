@@ -1,6 +1,6 @@
 class ArrangementsController < ApplicationController
     before_action :set_arrangement, only: %i[ show edit destroy ]
-    before_action :set_user, only:  :new 
+    before_action :verify_logged_in
 
     def index
         if params[:team_id]
@@ -13,14 +13,9 @@ class ArrangementsController < ApplicationController
                 redirect_to user_teams_path(current_user)
             end
         else
-            set_user
-            if @user == current_user
-                @arrangements = @user.owned_arrangements
-                @list_title = @user.username
-                render 'arrangements/index'
-            else
-                redirect_to login_path
-            end
+            @arrangements = current_user.owned_arrangements
+            @list_title = current_user.username
+            render 'arrangements/index'
         end
     end
     
@@ -34,13 +29,9 @@ class ArrangementsController < ApplicationController
     end
 
     def new
-        if logged_in?
-            @arrangement = Arrangement.new
-            @arrangement.charts.build
-            render 'arrangements/new'
-        else
-            redirect_to login_path    
-        end
+        @arrangement = Arrangement.new
+        @arrangement.charts.build
+        render 'arrangements/new'
     end
 
     def create
@@ -50,7 +41,6 @@ class ArrangementsController < ApplicationController
         a.genres.each do |genre|
             @user.genres << genre
         end
-        byebug
         if a.save
             redirect_to a
         else
@@ -78,10 +68,6 @@ class ArrangementsController < ApplicationController
     private
         def set_arrangement
             @arrangement = Arrangement.find(params[:id])
-        end
-
-        def set_user
-            @user = User.find(params[:user_id])
         end
 
         def arrangement_params

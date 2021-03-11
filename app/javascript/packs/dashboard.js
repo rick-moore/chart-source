@@ -3,9 +3,9 @@ $(document).on('click', '.accordion_title', function() {
 })
 
 $(document).on('input', "#arr_search", function(){
-    arrs = $('#arrangement_list').children()
+    arrs = $('.arrangement_list').children()
     for (i of arrs) {
-        text = $(i).find(".title_span").first().text().toLowerCase()
+        text = $(i).text().toLowerCase()
         if (!text.includes($("#arr_search").val().toLowerCase())) {
             $(i).hide()
         } else {

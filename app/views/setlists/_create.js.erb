@@ -1,6 +1,7 @@
 $('#setlist_add form').remove();
 $('#setlist_add a').show();
 $('#setlist_id').empty();
+$('#setlist_list').children().remove();
 <% @user.created_setlists.all.each do |setlist| %>
-  $('#setlist_id').append($('<option value="<%= setlist.id %>"><%= setlist.name %></option>'));
+  $('#setlist_id').append($('<option value="<%= setlist.id %>" selected><%= setlist.name %></option>'));
 <% end %>
