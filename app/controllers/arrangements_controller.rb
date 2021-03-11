@@ -1,5 +1,5 @@
 class ArrangementsController < ApplicationController
-    before_action :set_arrangement, only: %i[ show edit destroy ]
+    before_action :set_arrangement, only: %i[ show edit update destroy ]
     before_action :verify_logged_in
 
     def index
@@ -31,37 +31,65 @@ class ArrangementsController < ApplicationController
     def new
         @arrangement = Arrangement.new
         @arrangement.charts.build
+        @arrangement.song = Song.new
+        @arrangement.artist = Artist.new
+        @arrangement.arranger = Arranger.new
+        @user = current_user
         render 'arrangements/new'
     end
 
     def create
-        @user = User.find_by(id: params[:user_id])
-        a = Arrangement.new(arrangement_params)
-        a.owner = @user
-        a.genres.each do |genre|
+        @user = current_user
+        @arrangement = Arrangement.new(arrangement_params)
+        @arrangement.owner = @user
+        @arrangement.genres.each do |genre|
             @user.genres << genre
         end
-        if a.save
-            redirect_to a
+        if @arrangement.save
+            redirect_to @arrangement
         else
-            render new_user_arrangement_path(@user, a)
+            render new_arrangement_path
         end
     end
 
     def edit
         if @arrangement.belongs_to_user(current_user)
+            @user = current_user
+            @arrangement.artist = Artist.new unless @arrangement.artist
             render 'arrangements/edit'
         else
-            redirect_to user_arrangements_path(current_user)
+            redirect_to arrangements_path, alert: "You can only edit your own arrangements" 
         end
     end
 
+    def update
+        @user = current_user
+        if @user == @arrangement.owner
+            @arrangement = Arrangement.find_by(id: params[:id])
+            @arrangement.update(arrangement_params)
+            @arrangement.genres.each do |genre|
+                @user.genres << genre unless @user.genres.include?(genre)
+            end
+            genre_cleanup
+
+            if @arrangement.save
+                redirect_to @arrangement
+            else
+                render new_arrangement_path
+            end
+        else
+            redirect_to arrangements_path, alert: "You can only update your own arrangements"
+        end 
+    end
+
+
     def destroy
         if @arrangement.belongs_to_user(current_user)
+            @arrangement.assets_cleanup
             @arrangement.destroy
-            redirect_to user_arrangements_path(current_user)
+            redirect_to arrangements_path, :notice => "Arrangement Deleted"
         else
-            redirect_to user_arrangements_path(current_user)
+            redirect_to arrangements_path, :alert => "You cannot delete an arrangement that does not belong to you."
         end
     end
 
@@ -75,11 +103,19 @@ class ArrangementsController < ApplicationController
                                                 :key, 
                                                 :tempo, 
                                                 :genre_input, 
-                                                :song_attributes => [:name, :user_id], 
-                                                :artist_attributes => [:name, :user_id], 
-                                                :arranger_attributes => [:name, :user_id], 
+                                                :song_attributes => [:name, :user_id, :id], 
+                                                :artist_attributes => [:name, :user_id, :id], 
+                                                :arranger_attributes => [:name, :user_id, :id], 
                                                 :genre_attributes => [:names, :user_id],
-                                                :charts_attributes => [:id, :instrument, :chart_pdf]
+                                                :charts_attributes => [:id, :instrument, :chart_pdf, :_destroy]
             )
+        end
+
+        def genre_cleanup
+            @user.genres.each do |genre|
+                if genre.arrangements.count == 0
+                    genre.destroy
+                end
+            end
         end
 end

@@ -1,7 +1,7 @@
 <main class="container">
     <section class="edit_chart_header">
         <h1><%= @chart.arrangement.song.name %></h1>
-        <h2><%= @chart.arrangement.artist.name %></h2>
+        <h2><%= @chart.arrangement.artist.name if @chart.arrangement.artist %></h2>
         <h2>Arr. <%= @chart.arrangement.arranger.name %></h2>
     </section>
     <section class="edit_chart_body">

@@ -1,7 +1,12 @@
 module ArrangementsHelper
     def title_details_for(arrangement)
-        arrangement.song.name + " - " + 
-        arrangement.artist.name + " - " + 
-        arrangement.arranger.name
+        if arrangement.artist
+            arrangement.song.name + " - " + 
+            arrangement.artist.name + " - " + 
+            arrangement.arranger.name
+        else
+            arrangement.song.name + " - " + 
+            arrangement.arranger.name
+        end
     end
 end

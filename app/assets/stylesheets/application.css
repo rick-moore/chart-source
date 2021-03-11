@@ -125,11 +125,25 @@ button {
     border: 1px solid black;
     text-decoration: none;
     cursor: pointer;
+    background: transparent;
+    color: white;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.562);
+    transition: all 0.3s ease; 
+}
+
+.button:hover,
+button:hover,
+.button a:hover,
+button a:hover {
+    transform: scale(1.1);
+    transition: all 0.3s ease; 
 }
 
 .button a,
 button a {
     text-decoration: none;
+    color: white;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.562);
 }
 
 .error {
@@ -146,10 +160,12 @@ button a {
 .flash_alert {
     color: red;
     text-shadow: 1px 1px 2px rgb(255, 144, 144);
+    text-align: center;
 }
 .flash_notice {
     color: green;
     text-shadow: 1px 1px 2px rgb(163, 255, 139);
+    text-align: center;
 }
 
 
@@ -317,6 +333,28 @@ button a {
 
 /* NEW ARRANGEMENT PAGE  */
 
+.new_arrangement_header {
+    margin-bottom: 30px;
+}
+
+.new_arrangement_body {
+    max-width: 400px;
+    width: 90%;
+    margin-bottom: 100px;
+}
+
+.new_arrangement_body form input {
+    width: 100%;
+    padding: 5px;
+    border-radius: 10px;
+}
+
+.new_arrangement_body form fieldset {
+    padding: 15px 30px 15px 15px;
+    border-radius: 10px;
+    margin-bottom: 20px;
+}
+
 .tag_span {
     background: white;
     border: none;
@@ -325,7 +363,7 @@ button a {
     border-radius: 20px;
 }
 
-/* TEAM INDEX */
+/* SHOW TEAM PAGE */
 .team_card {
     background:rgba(66, 65, 77, 0.158);
     border-radius: 10px;
@@ -348,3 +386,48 @@ button a {
     border-radius: 10px;
     padding: 10px;
 }
+
+.show_team_header {
+    margin-bottom: 30px;
+}
+
+.show_team_body fieldset {
+    padding: 15px;
+    margin-bottom: 10px;
+    border-radius: 10px;
+}
+
+.show_team_body .team_setlists_title {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.show_team_body .team_setlists_title select {
+    padding: 5px;
+    border-radius: 10px;
+}
+
+/* EDIT TEAM PAGE */
+.edit_team_body {
+    width: 90%;
+    max-width: 500px;
+    margin-bottom: 50px;
+}
+
+.edit_team_body form input[type=text] {
+    width: 100%;
+    padding: 5px;
+    border-radius: 10px;
+}
+
+.edit_team_body fieldset {
+    padding: 15px;
+    margin-bottom: 10px;
+    border-radius: 10px;
+}
+
+
+
+
+

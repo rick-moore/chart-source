@@ -2,7 +2,7 @@
 <ul>
     <% arrangement.charts.each do |chart| %>
         <li>
-            <%= chart.instrument %>
+            <%= link_to chart.instrument, chart %>
         </li>
     <% end %>
 </ul>
@@ -15,7 +15,7 @@
 <ul>
     <% arrangement.genres.each do |genre| %>
         <li>
-            <%= genre.name %>
+            <%= link_to genre.name, genre %>
         </li>
     <% end %>
 </ul>

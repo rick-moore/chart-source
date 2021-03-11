@@ -2,17 +2,17 @@
 # The data can then be loaded with the bin/rails db:seed command (or created alongside the database with db:setup).
 
 ##### USERS #####
-user1 = User.create(username: "Rick", email: "rick@email.com", password: "rick", instrument: "Sax")
-user2 = User.create(username: "Connor", email: "connor@email.com", password: "connor", instrument: "Drums")
-user3 = User.create(username: "Emmet", email: "emmet@email.com", password: "emmet", instrument: "Guitar")
-user4 = User.create(username: "Julian", email: "julian@email.com", password: "julian", instrument: "Bass")
-user5 = User.create(username: "Stefan", email: "stefan@email.com", password: "stefan", instrument: "Keyboard")
-user6 = User.create(username: "Ish", email: "ish@email.com", password: "ish", instrument: "Trombone")
-user7 = User.create(username: "Alejo", email: "alejo@email.com", password: "alejo", instrument: "Trumpet")
-user8 = User.create(username: "Nicole", email: "nicole@email.com", password: "nicole", instrument: "Vocals")
+user1 = User.create(username: "Rick", email: "rick@email.com", password: "rick123", instrument: "Sax")
+user2 = User.create(username: "Connor", email: "connor@email.com", password: "connor123", instrument: "Drums")
+user3 = User.create(username: "Emmet", email: "emmet@email.com", password: "emmet123", instrument: "Guitar")
+user4 = User.create(username: "Julian", email: "julian@email.com", password: "julian123", instrument: "Bass")
+user5 = User.create(username: "Stefan", email: "stefan@email.com", password: "stefan123", instrument: "Keyboard")
+user6 = User.create(username: "Ish", email: "ish@email.com", password: "ish123", instrument: "Trombone")
+user7 = User.create(username: "Alejo", email: "alejo@email.com", password: "alejo123", instrument: "Trumpet")
+user8 = User.create(username: "Nicole", email: "nicole@email.com", password: "nicole123", instrument: "Vocals")
 
 ##### TEAMS #####
-team1 = user1.led_teams.create(name: "Glory Band")
+team1 = Team.create(name: "Glory Band", leader: user1)
 
 Membership.create(team_id: 1, user_id: 2, display_name: "Connor A.")
 Membership.create(team_id: 1, user_id: 3, display_name: "Emmet M.")
@@ -53,21 +53,21 @@ arrangement6 = user1.owned_arrangements.create(arranger: arranger4, song: song4,
 arrangement7 = user1.owned_arrangements.create(arranger: arranger5, song: song5, artist: artist5, key: "Ebm", tempo: 134)
 
 ##### GENRES #####
-genre1 = user1.genres.create(name: "pop")
-genre2 = user1.genres.create(name: "blues")
-genre3 = user1.genres.create(name: "rock")
-genre4 = user1.genres.create(name: "jazz")
-genre5 = user1.genres.create(name: "R&B")
+# genre1 = user1.genres.create(name: "pop")
+# genre2 = user1.genres.create(name: "blues")
+# genre3 = user1.genres.create(name: "rock")
+# genre4 = user1.genres.create(name: "jazz")
+# genre5 = user1.genres.create(name: "R&B")
 
-arrangement1.genres << genre1
-arrangement1.genres << genre3
-arrangement2.genres << genre2
-arrangement3.genres << genre3
-arrangement3.genres << genre5
-arrangement4.genres << genre5
-arrangement5.genres << genre1
-arrangement6.genres << genre2
-arrangement7.genres << genre3
+# arrangement1.genres << genre1
+# arrangement1.genres << genre3
+# arrangement2.genres << genre2
+# arrangement3.genres << genre3
+# arrangement3.genres << genre5
+# arrangement4.genres << genre5
+# arrangement5.genres << genre1
+# arrangement6.genres << genre2
+# arrangement7.genres << genre3
 
 
 ##### CHARTS #####

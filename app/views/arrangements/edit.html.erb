@@ -1,9 +1,6 @@
 <main class="container">
     <section class="new_arrangement_header">
-        <h1>New Arrangement</h1>
-        <% if @arrangement.errors.any? %>
-            <%= render 'layouts/error_field', item: @arrangement %>
-        <% end %>
+        <h1>Edit Arrangement</h1>
     </section>
     <section class="new_arrangement_body">
         <%= form_for @arrangement do |f| %>
@@ -50,11 +47,8 @@
                 </div>
                 <br>
             </div>
-            <%= f.submit "Create Arrangement" %>
+            <%= f.submit "Update Arrangement" %>
         <% end %> 
-    </section>
-    <section class="new_arrangement_footer">
-    
     </section>
 </main>
 
@@ -79,4 +73,14 @@
     var observer = new MutationObserver(callback);
 
     observer.observe(targetNode, config);
+
+    $(document).ready(function() {
+        console.log('UPDATING')
+        genres = $('#genre_list').children()
+        genre_names = ''
+        for (i of genres) {
+            genre_names += i.innerText.slice(0, -1) + ","    
+        }
+        $('#genres_hidden').val(genre_names.slice(0, -1))
+    })
 </script>

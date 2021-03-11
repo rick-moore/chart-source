@@ -11,6 +11,7 @@ require("jquery")
 require("@nathanvda/cocoon")
 require("packs/dashboard")
 require("packs/password")
+require("packs/genretool")
 
 Rails.start()
 Turbolinks.start()

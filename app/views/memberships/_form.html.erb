@@ -1,7 +1,7 @@
 <%= form_with model: membership, url: memberships_path, method: :post, local: false do |f| %>
     <%= f.hidden_field :team_id, value: @team.id %>
     <%= f.label :email, "Enter Email or Username:" %><br>
-    <%= f.text_field :email %>
+    <%= f.text_field :email, required: true %>
     <br><br>
-    <%= f.submit "Add Team Member" %>
+    <%= f.submit "Add Team Member", class: 'button' %>
 <% end %>

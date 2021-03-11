@@ -1,4 +1,3 @@
-console.log("loaded")
 $(document).on('input', '#user_password', function() {
     console.log('checking')
     if ($('#user_password').val() !== $('#user_password_confirmation').val()) {

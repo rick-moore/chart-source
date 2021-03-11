@@ -1,6 +1,19 @@
 <main class="container">
     <section class="show_team_header">
         <h1><%= @team.name %></h1>
+        <button>
+            <%= link_to "Show Team Arrangements", team_arrangements_path(@team) %>
+        </button>
+        <% if current_user == @team.leader %>
+            <button>
+                <%= link_to "Edit Team Settings", edit_team_path(@team) %>
+            </button>
+        <% else %>
+            <button>
+                <%= link_to "Edit Membership", edit_membership_path(@membership) %>
+            </button>
+        <% end %>
+        <%= render 'layouts/flash_field' %>
     </section>
     <section class="show_team_body">
         <div id="team_members_list">
@@ -13,7 +26,14 @@
             %>
         </div>
         <div id="team_setlists">
-            <h2>Setlists</h2>
+            <div class="team_setlists_title">
+                <h2>Setlists</h2>
+                <div id="share_setlist">
+                    <button>
+                        <%= link_to "Share a Setlist", new_team_setlist_share_path(@team), remote: true %>
+                    </button>
+                </div>   
+            </div>
             <br>
             <div id="team_setlists_list">
                 <%= render :collection => @team.setlists, 
@@ -22,20 +42,6 @@
                         :locals => {team: @team} 
                 %>
             </div>
-            <div id="share_setlist">
-                <%= link_to "Share a Setlist", new_team_setlist_share_path(@team), remote: true %>
-            </div>
         </div>
     </section>
-    <section class="show_team_footer">
-        <%= link_to "Show Team Arrangements", team_arrangements_path(@team) %>
-        <% if current_user == @team.leader %>
-            <%= link_to "Edit Team Settings", edit_team_path(@team) %>
-        <% else %>
-            <%= link_to "Edit Membership", edit_membership_path(@membership) %>
-        <% end %>
-    </section>
 </main>
-
-<script>
-</script>

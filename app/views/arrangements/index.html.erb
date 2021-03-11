@@ -1,6 +1,7 @@
 <main class="container">
     <section class="arrangements_index_header">
         <h1>All Arrangements for <%= @list_title %></h1>
+        <%= render 'layouts/flash_field' %>
     </section>
     <section class="arrangements_index_body">
         <%= render :collection => @arrangements.sort_by_song_title, 

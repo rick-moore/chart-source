@@ -1,7 +1,12 @@
-<fieldset>
+<fieldset class="chart_card">
     <%= f.label :instrument, "Instrument" %><br>
     <%= f.text_field :instrument %>
     <br><br>
     <%= f.label :chart_pdf, "Choose a PDF:" %>
     <%= f.file_field :chart_pdf %>
+    <% if f.object.chart_pdf.attached? %>
+        <%= cl_image_tag f.object.chart_pdf.key, :width=>150, :crop=>"fill", :format => :jpg %>
+    <% end %>
+    <%= link_to_remove_association('Remove Chart', f, { wrapper_class: 'chart_card', class: 'chart' }) %>
+    <br>
 </fieldset>

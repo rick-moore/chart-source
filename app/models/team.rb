@@ -6,6 +6,7 @@ class Team < ApplicationRecord
     has_many :setlists, through: :setlist_shares
     has_many :arrangements, through: :setlists
     accepts_nested_attributes_for :memberships
+    validates :name, presence: true
 
     def is_member_or_leader?(user)
         members.include?(user) || leader == user

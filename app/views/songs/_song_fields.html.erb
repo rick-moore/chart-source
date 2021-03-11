@@ -1,10 +1,8 @@
-<%= f.fields_for :song_attributes do |builder| %>
-    <%= builder.hidden_field :user_id, :value => user.id %>
-    <%= builder.label :name, 'Song Title' %><br>
-    <%= builder.text_field :name, list: 'song-title' %>
-    <datalist id='song-title'>
-    <% user.unique_songs.each do |song| %>
-        <option value="<%= song.name %>"></option>
-    <% end %>
-    </datalist>
+<%= f.hidden_field :user_id, :value => user.id %>
+<%= f.label :name, 'Song Title *required' %><br>
+<%= f.text_field :name, list: 'song-title' %>
+<datalist id='song-title'>
+<% user.songs.each do |song| %>
+    <option value="<%= song.name %>"></option>
 <% end %>
+</datalist>

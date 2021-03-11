@@ -1,13 +1,16 @@
 <main class="container">
     <section class="edit_team_header">
         <h1>Edit Team</h1>
+        <%= render 'layouts/error_field', item: @team %>
+        <%= render 'layouts/flash_field', item: @team %>
     </section>
     <section class="edit_team_body">
         <%= form_for @team do |f| %>
             <%= f.label :name %><br>
             <%= f.text_field :name %><br><br>
-            <%= f.submit "Update Team Settings" %>
+            <%= f.submit "Update Team Settings", class: 'button' %>
         <% end %>
+        <br><br>
         <div id="members_list">
             <%= render :collection => @members, 
                         :partial => 'member_card',

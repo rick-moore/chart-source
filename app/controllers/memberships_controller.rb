@@ -1,39 +1,41 @@
 class MembershipsController < ApplicationController
+    before_action :verify_logged_in
+
     def create
         @team = Team.find_by(id: membership_params[:team_id])
         if @user = User.find_by_username_or_email(membership_params[:email])
-            @membership = Membership.create(user: @user, team: @team, display_name: @user.username)
-            if @membership.save
-                respond_to do |format|
-                    @members = @team.members
-                    format.js
-                end
+            if @membership = Membership.find_by(user: @user, team: @team)
+                redirect_to edit_team_path(@team), alert: "That person is already a member of this team"
             else
-                render 'team/edit'
-            end
-        else
-            render 'teams/edit'
-        end
-    end
-
-    def destroy
-        if logged_in?
-            @membership = Membership.find_by(id: params[:id])
-            @team = Team.find_by(id: @membership.team.id)
-            if @team.is_leader?(current_user)
-                if @membership.destroy
+                @membership = Membership.create(user: @user, team: @team, display_name: @user.username)
+                if @membership.save
                     respond_to do |format|
                         @members = @team.members
                         format.js
                     end
                 else
-                    render edit_team_path(@team)
+                    render 'team/edit'
                 end
-            else
-                redirect_to home_path
             end
         else
-            redirect_to login_path
+            redirect_to 'teams/edit', alert: "That account cannot be found"
+        end
+    end
+
+    def destroy
+        @membership = Membership.find_by(id: params[:id])
+        @team = Team.find_by(id: @membership.team.id)
+        if @team.is_leader?(current_user)
+            if @membership.destroy
+                respond_to do |format|
+                    @members = @team.members
+                    format.js
+                end
+            else
+                render edit_team_path(@team)
+            end
+        else
+            redirect_to home_path
         end
     end
 
