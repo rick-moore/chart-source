@@ -10,9 +10,11 @@
             <%= cl_image_tag(@chart.chart_pdf.key, :secure=>true, :width=>200, :crop=>"fill", :format=>:jpg) %>
         <% end %>
         <br><br>
+        <% if current_user == @chart.arrangement.owner %>
         <button>
             <%= link_to "Edit This Chart", edit_chart_path(@chart) %> 
         </button>
+        <% end %>
     </section>
     <section class="show_chart_footer">
     

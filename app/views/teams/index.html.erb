@@ -3,10 +3,17 @@
         <h1>My Teams</h1>
     </section>
     <section class="team_index_body">
-        <h2>Teams I Lead:</h2>
-        <% @led_teams.each do |team| %>
+        <% @teams.each do |team| %>
             <%= render :partial => 'team_card', :locals => {team: team} %>
         <% end %>
+        <br>
+        <% if @led_teams.any? %>
+        <h2>Teams I Lead:</h2>
+            <% @led_teams.each do |team| %>
+                <%= render :partial => 'team_card', :locals => {team: team} %>
+            <% end %>
+        <% end %>
+
     </section>
     <section class="team_index_footer">
     

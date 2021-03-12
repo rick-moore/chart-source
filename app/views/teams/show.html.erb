@@ -37,9 +37,9 @@
             <br>
             <div id="team_setlists_list">
                 <%= render :collection => @team.setlists, 
-                        :partial => "setlist_card", 
-                        :as => :setlist, 
-                        :locals => {team: @team} 
+                           :partial => "setlist_card", 
+                           :as => :setlist, 
+                           :locals => {team: @team} 
                 %>
             </div>
         </div>

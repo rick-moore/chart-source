@@ -1,17 +1,27 @@
 <main class="container">
     <section class="songs_index_header">
-        <h1> All Songs for <%= current_user.username %></h1>
+        <h1>All Songs</h1>
     </section>
     <section class="songs_index_body">
-        <ul>
+            <div>
+                <span>
+                    <h2>Song Title</h2>
+                </span>
+                <span>
+                    <h2>No. of Arrangements</h2>
+                </span>
+            </div>
+            <hr>
+            <br>
             <% @songs.each do |song| %>
-                <li>
+            <div>
+                <span>
                     <%= link_to song.name, song %>
-                </li>
+                </span>
+                <span>
+                    <%= song.arrangements.count %>
+                </span>
+            </div>
             <% end %>
-        </ul>
-    </section>
-    <section class="songs_index_footer">
-    
     </section>
 </main>

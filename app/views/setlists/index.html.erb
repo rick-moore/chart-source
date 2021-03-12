@@ -1,11 +1,11 @@
 <main class="container">
-    <section class="genres_index_header">
-        <h1>All Genres</h1>
+    <section class="setlists_index_header">
+        <h1>All Arrangers</h1>
     </section>
-    <section class="genres_index_body">
+    <section class="setlists_index_body">
             <div>
                 <span>
-                    <h2>Genre</h2>
+                    <h2>Setlist Name</h2>
                 </span>
                 <span>
                     <h2>No. of Arrangements</h2>
@@ -13,13 +13,13 @@
             </div>
             <hr>
             <br>
-            <% @genres.each do |genre| %>
+            <% @setlists.each do |setlist| %>
             <div>
                 <span>
-                    <%= link_to genre.name, genre %>
+                    <%= link_to setlist.name, setlist %>
                 </span>
                 <span>
-                    <%= genre.arrangements.count %>
+                    <%= setlist.arrangements.count %>
                 </span>
             </div>
             <% end %>

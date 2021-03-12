@@ -1,16 +1,29 @@
 <main class="container">
     <section class="show_song_header">
         <h1><%= @song.name %></h1>
+        <h2>Arrangements:</h2>
     </section>
     <section class="show_song_body">
-        <%= render partial: 'song_details', 
-                   :locals => {
-                       song: @song,
-                       user: @user
-                   }             
-        %>
-    </section>
-    <section class="show_song_footer">
-    
+        <div>
+            <span>
+                <h2>Arranger</h2>
+            </span>
+            <span>
+                <h2>Artist</h2>
+            </span>
+        </div>
+        <hr>
+        <br>
+        <% @song.arrangements.each do |arrangement| %>
+            <div>
+                <span>
+                    <%= link_to arrangement.arranger.name, arrangement %>
+                </span>
+                <span>
+                    <%= link_to arrangement.artist.name, arrangement.artist %>
+                </span>            
+            </div>
+        <% end %>
+    <br>
     </section>
 </main>

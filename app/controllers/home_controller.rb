@@ -3,11 +3,11 @@ class HomeController < ApplicationController
         render 'home/index'
     end
 
-    def index
+    def home
         if logged_in?
             redirect_to current_user
         else
-            redirect_to login_path
+            redirect_to landing_page_path
         end
     end
 end

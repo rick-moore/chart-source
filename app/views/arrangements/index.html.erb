@@ -2,6 +2,20 @@
     <section class="arrangements_index_header">
         <h1>All Arrangements for <%= @list_title %></h1>
         <%= render 'layouts/flash_field' %>
+        <div>
+            <% if @team %>
+                <button>
+                    <%= link_to "Back To Team Home", team_path(@team) %>
+                </button>
+            <% else %>
+                <button>
+                    <%= link_to "Create a New Arrangement", new_arrangement_path %>
+                </button>
+                <button>
+                    <%= link_to "Back To Dashboard", current_user %>
+                </button>
+            <% end %>
+        </div>
     </section>
     <section class="arrangements_index_body">
         <%= render :collection => @arrangements.sort_by_song_title, 
@@ -13,15 +27,6 @@
                         set_entry: SetEntry.new
                    } 
         %>
-    </section>
-    <section class="arrangements_index_footer">
-        <% if @team %>
-            <%= link_to "Back To Team Home", team_path(@team) %>
-        <% else %>
-            <%= link_to "Create a New Arrangement", new_arrangement_path %>
-            <%= link_to "Back To Dashboard", @user %>
-        <% end %>
-        
     </section>
 </main>
 

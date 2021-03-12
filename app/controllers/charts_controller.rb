@@ -4,12 +4,23 @@ class ChartsController < ApplicationController
     end
 
     def edit
+        if current_user == @chart.arrangement.owner
+            render 'charts/edit'
+        else
+            redirect_to current_user, alert: "You can only edit charts you created" 
+        end
     end
 
     def update
-        @chart.update(chart_params)
-        if @chart.save
-            redirect_to @chart
+        if current_user == @chart.arrangement.owner
+            @chart.update(chart_params)
+            if @chart.save
+                redirect_to @chart
+            else
+                render 'charts/edit'
+            end 
+        else
+            redirect_to current_user, alert: "You can only edit charts you created" 
         end
     end
 

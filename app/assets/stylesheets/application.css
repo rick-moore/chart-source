@@ -85,16 +85,44 @@ nav div{
     flex-direction: row;
 }
 
+.nav_controls #dashboard_nav_wrapper,
 .nav_controls #arrangements_nav_wrapper {
     position: relative;
     display: flex;
     flex-direction: column;
 }
 
+#dashboard_nav_options,
 #arrangements_nav_options {
     display: none;
 }
 
+#arrangements_nav_options h2 {
+    width: 150px;
+    padding: 5px 0;
+    background: rgba(255, 255, 255, 0.918);
+    border: 2px solid grey;
+    text-align: center;
+    transition: all 0.2s ease;
+}
+
+#dashboard_nav_options h2 {
+    width: 120px;
+    padding: 5px 0;
+    background: rgba(255, 255, 255, 0.918);
+    border: 2px solid grey;
+    text-align: center;
+    transition: all 0.2s ease;
+}
+
+
+
+#dashboard_nav_options h2:hover,
+#arrangements_nav_options h2:hover {
+    background: rgba(148, 154, 236, 0.918);
+}
+
+.nav_controls #dashboard_nav_wrapper:hover > #dashboard_nav_options,
 .nav_controls #arrangements_nav_wrapper:hover > #arrangements_nav_options {
     display: flex;
     flex-direction: column;
@@ -169,6 +197,20 @@ button a {
 }
 
 
+/* LANDING PAGE */
+.landing_body {
+    width: 800px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+.landing_body div {
+    margin-top: 150px;
+    width: 400px;
+    text-align: center;
+}
 
 /* LOGIN PAGE */
 .login_body {
@@ -211,6 +253,17 @@ button a {
     outline: none;
 }
 
+/* EDIT USER PAGE */
+.edit_user_body {
+    width: 90%;
+    max-width: 400px;
+}
+.edit_user_body input[type='password'],
+.edit_user_body input[type='text'] {
+    width: 100%;
+    padding: 5px;
+    border-radius: 10px;
+}
     
 
 /* DASHBOARD */
@@ -363,6 +416,26 @@ button a {
     border-radius: 20px;
 }
 
+/* ARRANGEMENTS INDEX PAGE */
+.arrangements_index_header,
+.arrangements_index_header h1 {
+    margin-bottom: 20px;
+}
+.arrangements_index_header div {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.arrangements_index_header div button {
+    margin: 0 5px;
+}
+
+.arrangements_index_body {
+    width: 90%;
+    max-width: 500px;
+}
+
 /* SHOW TEAM PAGE */
 .team_card {
     background:rgba(66, 65, 77, 0.158);
@@ -427,7 +500,170 @@ button a {
     border-radius: 10px;
 }
 
+/* EDIT MEMBERSHIP PAGE */
+.edit_membership_body {
+    width: 90%;
+    max-width: 500px;
+}
 
+.edit_membership_body input {
+    width: 100%;
+    padding: 5px;
+    border-radius: 10px;
+}
 
+/* SONGS INDEX */
+.songs_index_body {
+    width: 90%;
+    max-width: 400px;
+}
+
+.songs_index_body div {
+    display: flex;
+    flex-direction: row ;
+    justify-content: space-between;
+}
+
+.songs_index_body div span a {
+    text-decoration: none;
+}
+
+/* SONG SHOW PAGE */
+.show_song_body {
+    width: 90%;
+    max-width: 400px;
+}
+
+.show_song_body div {
+    display: flex;
+    flex-direction: row ;
+    justify-content: space-between;
+}
+
+.show_song_body div span a {
+    text-decoration: none;
+}
+
+/* ARTISTS INDEX */
+.artists_index_body {
+    width: 90%;
+    max-width: 400px;
+}
+
+.artists_index_body div {
+    display: flex;
+    flex-direction: row ;
+    justify-content: space-between;
+}
+
+.artists_index_body div span a {
+    text-decoration: none;
+}
+
+/* ARTIST SHOW PAGE */
+.show_artist_header h2 {
+    text-align: center;
+}
+
+.show_artist_body {
+    width: 90%;
+    max-width: 400px;
+}
+
+.show_artist_body div {
+    display: flex;
+    flex-direction: row ;
+    justify-content: space-between;
+}
+
+.show_artist_body div span a {
+    text-decoration: none;
+}
+
+/* ARRANGERS INDEX */
+
+.arrangers_index_body {
+    width: 90%;
+    max-width: 500px;
+}
+
+.arrangers_index_body div {
+    display: flex;
+    flex-direction: row ;
+    justify-content: space-between;
+}
+
+.arrangers_index_body div span a {
+    text-decoration: none;
+}
+
+/* ARRANGER SHOW PAGE */
+.show_arranger_header h2 {
+    text-align: center;
+}
+
+.show_arranger_body {
+    width: 90%;
+    max-width: 400px;
+}
+
+.show_arranger_body div {
+    display: flex;
+    flex-direction: row ;
+    justify-content: space-between;
+}
+
+.show_arranger_body div span a {
+    text-decoration: none;
+}
+
+/* GENRES INDEX */
+
+.genres_index_body {
+    width: 90%;
+    max-width: 400px;
+}
+
+.genres_index_body div {
+    display: flex;
+    flex-direction: row ;
+    justify-content: space-between;
+}
+
+.genres_index_body div span a {
+    text-decoration: none;
+}
+
+/* GENRE SHOW PAGE */
+.show_genre_body {
+    width: 90%;
+    max-width: 400px;
+}
+
+.show_genre_body div {
+    display: flex;
+    flex-direction: row ;
+    justify-content: space-between;
+}
+
+.show_genre_body div span a {
+    text-decoration: none;
+}
+
+/* SETLIST INDEX PAGE */
+.setlists_index_body {
+    width: 90%;
+    max-width: 400px;
+}
+
+.setlists_index_body div {
+    display: flex;
+    flex-direction: row ;
+    justify-content: space-between;
+}
+
+.setlists_index_body div span a {
+    text-decoration: none;
+}
 
 

@@ -1,6 +1,12 @@
 <main class="container">
     <section class="show_setlist_header">
         <h1><%= @setlist.name %></h1>
+        <button type="button">Placeholder for Download Button</button>
+        <% if @team %>
+            <%= button_to "Remove from Team", setlist_share_path(@setlist_share), method: :delete, class: 'button' %>
+        <% else %>
+            <%= button_to "Delete Setlist", setlist_path(@setlist), method: :delete, class: 'button' %>
+        <% end %>
     </section>
     <section class="show_setlist_body">
         <%= render :collection => @setlist.set_entries.sort_by_position,
@@ -11,8 +17,5 @@
                         kind: 'team_setlist'
                    } 
         %>
-    </section>
-    <section class="show_setlist_footer">
-        <button type="button">Placeholder for Download Button</button>
     </section>
 </main>

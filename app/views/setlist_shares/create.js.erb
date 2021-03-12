@@ -1,4 +1,5 @@
+console.log('got it')
 $('#team_setlists_list').children().remove();
-$('#team_setlists_list').append('<%= j render :collection => @team.setlists, :partial => "teams/setlist_card", :as => "setlist", :locals => { user: @user } %>')
+$('#team_setlists_list').append('<%= j render :collection => @team.setlists, :partial => "teams/setlist_card", :as => "setlist", :locals => { user: @user, team: @team } %>')
 $('#share_setlist').show()
 $('.share_setlist_form').remove()

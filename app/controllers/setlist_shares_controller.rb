@@ -26,6 +26,17 @@ class SetlistSharesController < ApplicationController
         end
     end
 
+    def destroy
+        @setlist_share = SetlistShare.find_by(id: params[:id])
+        @team = @setlist_share.team
+        if current_user = @team.leader 
+            @setlist_share.destroy
+            redirect_to @team, notice: "Setlist removed"
+        else
+            redirect_to @team, notice: "Only the team leader can remove setlists"
+        end
+    end
+
     private
         def set_team
             @team = Team.find_by(params[:team_id]) 

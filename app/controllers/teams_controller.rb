@@ -12,7 +12,7 @@ class TeamsController < ApplicationController
             @membership = Membership.find_by(user: current_user, team: @team)
             render 'teams/show'
         else
-            redirect_to user_teams_path(current_user)
+            redirect_to user_teams_path(current_user), alert: "You are not a member of that team"
         end
     end
 
@@ -44,6 +44,7 @@ class TeamsController < ApplicationController
         def set_team
             @team = Team.find(params[:id])
         end
+
         def team_params
             params.require(:team).permit(:name)
         end

@@ -24,7 +24,7 @@ class ArrangementsController < ApplicationController
         if @arrangement.belongs_to_user(current_user) || @arrangement.has_team_access(current_user)
             render 'arrangements/show'
         else
-            redirect_to current_user
+            redirect_to current_user, alert: "You don't have access to this arrangement"
         end
     end
 

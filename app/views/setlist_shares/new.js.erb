@@ -1,1 +1,1 @@
-$('#share_setlist').hide().parent().append('<%= j render partial: "form", :locals => {team: @team, user: @team.leader, setlist_share: SetlistShare.new} %>')
+$('#share_setlist').hide().parent().append('<%= j render partial: "form", :locals => {team: @team, user: current_user, setlist_share: SetlistShare.new} %>')

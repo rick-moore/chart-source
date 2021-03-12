@@ -1,22 +1,29 @@
 <main class="container">
     <section class="show_artist_header">
         <h1><%= @artist.name %></h1>
+        <h2>Arrangements:</h2>
     </section>
     <section class="show_artist_body">
-        <h2>Songs and Arrangements:</h2>
-        <ul>
-            <% @artist.songs.each do |song| %>
-                <li><%= link_to song.name,  song %></li>
-                <h3>Arrangements:</h3>
-                <ul>
-                    <% song.arrangements.each do |arrangement| %>
-                        <li><%= link_to arrangement.arranger.name, arrangement.arranger %></li>
-                    <% end %>
-                </ul>
-            <% end %>
-        </ul>
-    </section>
-    <section class="show_artist_footer">
-    
+        <div>
+            <span>
+                <h2>Arranger</h2>
+            </span>
+            <span>
+                <h2>Song</h2>
+            </span>
+        </div>
+        <hr>
+        <br>
+        <% @artist.arrangements.each do |arrangement| %>
+            <div>
+                <span>
+                    <%= link_to arrangement.arranger.name, arrangement %>
+                </span>
+                <span>
+                    <%= link_to arrangement.song.name, arrangement.song %>
+                </span>            
+            </div>
+        <% end %>
+    <br>
     </section>
 </main>
