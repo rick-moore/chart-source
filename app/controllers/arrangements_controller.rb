@@ -2,6 +2,7 @@ class ArrangementsController < ApplicationController
     before_action :set_arrangement, only: %i[ show edit update destroy ]
     before_action :verify_logged_in
 
+
     def index
         if params[:team_id]
             @team = Team.find_by(id: params[:team_id]) 
@@ -85,7 +86,6 @@ class ArrangementsController < ApplicationController
 
     def destroy
         if @arrangement.belongs_to_user(current_user)
-            @arrangement.assets_cleanup
             @arrangement.destroy
             redirect_to arrangements_path, :notice => "Arrangement Deleted"
         else

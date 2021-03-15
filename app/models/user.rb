@@ -2,8 +2,9 @@ class User < ApplicationRecord
     has_secure_password
     validates :username, :presence => true,
                          :uniqueness => true
-    validates :password, :presence => true,
-                         :length => {minimum: 6}
+    validates :password, :presence => true, 
+                         :length => {minimum: 6},
+                         allow_nil: true
     validates :email, uniqueness: true
     has_many :created_setlists, :class_name => "Setlist", :foreign_key => :creator_id
     has_many :memberships

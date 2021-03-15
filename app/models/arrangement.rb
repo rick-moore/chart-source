@@ -12,6 +12,7 @@ class Arrangement < ApplicationRecord
     accepts_nested_attributes_for :charts, allow_destroy: true
     validates :song_id, presence: true
     validates :arranger_id, presence: true
+    before_destroy :assets_cleanup
     
     def belongs_to_user(user) 
         owner == user 

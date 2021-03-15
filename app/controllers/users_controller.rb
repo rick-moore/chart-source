@@ -27,21 +27,11 @@ class UsersController < ApplicationController
 
     
     def update
-        @email_user = User.find_by(email: user_params[:email])
-        @username_user = User.find_by(username: user_params[:username])
-        if !@email_user || @email_user == @user
-            @user.update_attribute('email', user_params[:email])
+        if @user.update(user_params)
+            redirect_to @user
         else
-            @user.errors.add(:email, "is in use.")
-            render 'users/edit' and return 
+            render 'users/edit'
         end
-        if !@username_user || @username_user == @user 
-            @user.update_attribute('username', user_params[:username])
-        else
-            @user.errors.add(:username, "is in use.")
-            render 'users/edit' and return
-        end
-        redirect_to @user, notice: "Settings updated"
     end
     
     def edit_password

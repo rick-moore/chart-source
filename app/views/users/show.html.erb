@@ -22,7 +22,8 @@
                                 user: @user, 
                                 kind: 'arr_list',
                                 set_entry: SetEntry.new
-                           } 
+                           },
+                           :cached => true 
                 %>
                 <% if !@user.owned_arrangements.any? %>
                     <%= link_to "Add Your First Arrangement Here!", new_arrangement_path %>
