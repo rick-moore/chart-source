@@ -68,8 +68,8 @@ nav h1 a {
     text-decoration: none;
     color: white;
     letter-spacing: 5px;
-    
 }
+
 nav h1 a:visited {
     text-decoration: none;
     color: white;
@@ -115,8 +115,6 @@ nav div{
     transition: all 0.2s ease;
 }
 
-
-
 #dashboard_nav_options h2:hover,
 #arrangements_nav_options h2:hover {
     background: rgba(148, 154, 236, 0.918);
@@ -144,6 +142,82 @@ nav div{
     text-decoration: none;
     color: white;
     text-shadow: 2px 2px 3px black;
+}
+
+.nav_menu {
+    display: none;
+}
+
+.nav_menu_button {
+    display: none;
+}
+
+@media (max-width: 480px) {
+    nav .nav_controls {
+        display: none;
+    }
+    nav h1 {
+        font-size: small;
+    }
+    nav .nav_menu {
+        position: relative;
+        display: block;
+        position: fixed;
+        top: 0;
+        left: 0;
+        background-color: darkslateblue;
+        width: 100%;
+        height: 100%;
+        z-index: 5;
+        opacity: 1;
+        transition: all 0.3s ease-in-out;
+    }
+    nav .nav_menu.hide {
+        display: none;
+        opacity: 0;
+    }
+    nav .nav_menu_button {
+        position: absolute;
+        top: -10px;
+        right: 0;
+        height: 30px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        align-items: center;
+        z-index: 10;
+    }
+    nav .nav_menu_button .bar {
+        position: relative;
+        height: 5px;
+        width: 30px;
+        border-radius: 20px;
+        background-color: white;
+        transition: all 0.3s ease-in-out;
+    }
+    nav .nav_menu_button.selected .bar:first-child {
+        transform: rotate(45deg) translateY(18px);
+        
+    }
+    nav .nav_menu_button.selected .bar:nth-child(2) {
+        opacity: 0
+    }
+    nav .nav_menu_button.selected .bar:nth-child(3) {
+        transform: rotate(-45deg) translateY(-18px);
+    }
+
+    nav .nav_menu .navmenu_controls {
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-evenly;
+        align-items: center;
+    }
+
+    nav .nav_menu .navmenu_controls a {
+        text-decoration: none;
+        color: white;
+    }
 }
 
 .button,
@@ -300,6 +374,17 @@ button a {
     justify-content: space-between;
     align-items: center;
     margin: 10px;
+}
+
+@media (max-width: 480px) {
+    .dashboard_body article {
+        margin-bottom: 20px;
+        padding-bottom: 20px;
+    }
+    .dashboard_body article .title h2 {
+        font-size: 16px;
+    } 
+
 }
 
 .dashboard_body article .title input {

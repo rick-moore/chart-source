@@ -1,6 +1,9 @@
 <main class="container">
     <section class="team_index_header">
         <h1>My Teams</h1>
+        <p>
+        <%= render 'layouts/flash_field' %>
+        </p>
     </section>
     <section class="team_index_body">
         <% @teams.each do |team| %>
@@ -13,9 +16,9 @@
                 <%= render :partial => 'team_card', :locals => {team: team} %>
             <% end %>
         <% end %>
-
-    </section>
-    <section class="team_index_footer">
-    
+        <br><br>
+        <button>
+            <%= link_to "Create a New Team", new_team_path %>
+        </button>
     </section>
 </main>

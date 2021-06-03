@@ -1,4 +1,6 @@
 class GenresController < ApplicationController
+    before_action :verify_logged_in
+
     def index
         @genres = current_user.genres
     end

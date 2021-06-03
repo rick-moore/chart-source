@@ -1,4 +1,13 @@
 <nav>
     <h1><%= link_to "CHART-SOURCE", home_path %></h1>
     <%= render 'layouts/login_buttons' %>
+    <div class="nav_menu_button">
+        <div class="bar"></div>
+        <div class="bar"></div>
+        <div class="bar"></div>
+    </div>
+    <div class='nav_menu hide'>
+        <%= render 'layouts/navmenu_login_buttons' %>
+    </div>
 </nav>
+

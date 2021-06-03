@@ -1,0 +1,18 @@
+<main class="container">
+    <section class="new_team_header">
+        <h1>New Team</h1>
+        <p>
+        <%= render 'layouts/error_field', item: @team %>
+        </p>
+        <p>
+        <%= render 'layouts/flash_field' %>
+        </p>
+    </section>
+    <section class="new_team_body">
+        <%= form_for @team do |f| %>
+            <%= f.label :name, "Team Name:" %><br>    
+            <%= f.text_field :name %><br><br>
+            <%= f.submit "Create Team" %>
+        <% end %>
+    </section>
+</main>

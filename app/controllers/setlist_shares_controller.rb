@@ -7,7 +7,7 @@ class SetlistSharesController < ApplicationController
     end
 
     def create
-        @team = Team.find_by(params[:setlist_share][:team_id])
+        @team = Team.find_by(id: params[:setlist_share][:team_id])
         if @team.is_member_or_leader?(current_user)
             if @ss = SetlistShare.find_by(setlist_share_params)
                 redirect_to @team, alert: "That setlist has already been shared"
@@ -39,7 +39,7 @@ class SetlistSharesController < ApplicationController
 
     private
         def set_team
-            @team = Team.find_by(params[:team_id]) 
+            @team = Team.find_by(id: params[:team_id]) 
         end
 
         def setlist_share_params

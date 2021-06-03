@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
     before_action :set_user, only: %i[ show edit update destroy edit_password update_password]
     before_action :verify_logged_in, only: %i[ show edit update destroy edit_password update_password]
-    before_action :verify_current_user, only: %i[ edit update destroy edit_password update_password]
+    before_action :verify_current_user, only: %i[ show edit update destroy edit_password update_password]
 
     def show
         @setlist = @user.created_setlists.first
@@ -28,7 +28,7 @@ class UsersController < ApplicationController
     
     def update
         if @user.update(user_params)
-            redirect_to @user
+            redirect_to @user, notice: "User settings updated"
         else
             render 'users/edit'
         end
@@ -72,7 +72,7 @@ class UsersController < ApplicationController
         end
 
         def user_params
-            params.require(:user).permit(:username, :email, :password, :password_confirmation)
+            params.require(:user).permit(:username, :email, :password, :password_confirmation, :instrument)
         end
 
         def verify_current_user

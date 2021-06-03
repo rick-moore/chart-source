@@ -21,9 +21,14 @@
         <div id="add_team_member">
             <button type="button" id="add_team_member_button">Add Team Member</button>
         </div>
-    </section>
-    <section class="edit_team_footer">
-    
+        <br>
+        <button>
+            <%= link_to "Back To Team", @team %>
+        </button>
+        <br>
+        <br>
+        <%= button_to "Delete Team", @team, method: :delete, class: "button", data: {confirm: 'Are you Sure?'} %>
+
     </section>
 </main>
 

@@ -12,6 +12,7 @@ require("@nathanvda/cocoon")
 require("packs/dashboard")
 require("packs/password")
 require("packs/genretool")
+require("packs/navmenu")
 
 Rails.start()
 Turbolinks.start()

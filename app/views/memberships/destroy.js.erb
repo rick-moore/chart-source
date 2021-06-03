@@ -1,2 +1,2 @@
-$('#members_list').children().empty()
+$('#members_list').empty()
 $('#members_list').append('<%= j render :collection => @members, :partial => "teams/member_card", :as => :member, :locals => {kind: "edit_team", team: @team} %>')

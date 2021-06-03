@@ -7,6 +7,7 @@ class Team < ApplicationRecord
     has_many :arrangements, through: :setlists
     accepts_nested_attributes_for :memberships
     validates :name, presence: true
+    before_destroy :assets_cleanup
 
     def is_member_or_leader?(user)
         members.include?(user) || leader == user
@@ -15,4 +16,10 @@ class Team < ApplicationRecord
     def is_leader?(user)
         leader == user
     end
+
+    def assets_cleanup
+        self.memberships.destroy_all
+        self.setlist_shares.destroy_all
+    end
+
 end
