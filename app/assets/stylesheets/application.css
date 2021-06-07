@@ -152,7 +152,7 @@ nav div{
     display: none;
 }
 
-@media (max-width: 480px) {
+@media (max-width: 1000px) {
     nav .nav_controls {
         display: none;
     }
@@ -286,6 +286,21 @@ button a {
     text-align: center;
 }
 
+@media (max-width: 1000px) {
+    .landing_body {
+        flex-direction: column;
+        justify-content: flex-start;
+        width: 100%;
+    }
+    .landing_body div {
+        width: 100%;
+        margin-top: 100px;
+    }
+    .landing_body img {
+        width: 100%;
+    }
+}
+
 /* LOGIN PAGE */
 .login_body {
     max-width: 300px;
@@ -376,7 +391,7 @@ button a {
     margin: 10px;
 }
 
-@media (max-width: 480px) {
+@media (max-width: 1000px) {
     .dashboard_body article {
         margin-bottom: 20px;
         padding-bottom: 20px;
@@ -537,12 +552,24 @@ button a {
     align-items: flex-start;
 }
 
+
 .show_team_body #team_setlists, 
 .show_team_body #team_members_list {
     width: 45%;
     background:rgba(66, 65, 77, 0.158);
     border-radius: 10px;
     padding: 10px;
+}
+
+@media (max-width: 480px) {
+    .show_team_body {
+        flex-direction: column-reverse;
+    }
+    .show_team_body #team_setlists, 
+    .show_team_body #team_members_list {
+        width: 90%;
+        margin-bottom: 10px;
+    }
 }
 
 .show_team_header {
