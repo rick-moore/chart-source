@@ -34,5 +34,8 @@ The Team portal section makes it quick and easy to share your created setlists w
 
 ![chartsource-share-setlist-demo](https://user-images.githubusercontent.com/72274257/122385599-4cb13980-cf6d-11eb-87f6-b06da1ebcf3a.gif)
 
+## User Login
+This application utilizes Omniauth to allow for login through Facebook or Github credentials.
+
 ## What's next?
 Currently, the free version of Cloudinary does not allow for the preparation and download of PDF's, so the application has placeholder functionality that I hope to eventually build out to bring this application into the market for use by the general public.  
