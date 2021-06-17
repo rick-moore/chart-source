@@ -1,24 +1,10 @@
-# README
+# CHART-SOURCE
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## A Tool for bandleaders to upload their sheet music library, create setlists, and share them with a team.
 
-Things you may want to cover:
+### Built with Ruby 2.7.2 and Rails 6.1.3
 
-* Ruby version
+## Database Design
+The database for Chart-Source was designed specifically for sheet music objects, and levereges the full power of Active-Record in Rails for its model associations.  The base model is an Arrangement, which belong to an arranger, an artist, a song.  Arrangements also have many genres, and charts.  These arrangements belong to an owner, who can place them in a setlist, to be shared with a team, which has a leader and many members.  See the diagram below for my complete database brainstorm:
 
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+![database](https://github.com/dirko/chart-source/blob/master/chartsource-database.jpg?raw=true)
