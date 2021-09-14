@@ -1,0 +1,57 @@
+{
+  "application.js": "/packs/js/application-d788b9aced247b31af4c.js",
+  "application.js.map": "/packs/js/application-d788b9aced247b31af4c.js.map",
+  "dashboard.js": "/packs/js/dashboard-4e6db4a22e187e4ee82a.js",
+  "dashboard.js.map": "/packs/js/dashboard-4e6db4a22e187e4ee82a.js.map",
+  "entrypoints": {
+    "application": {
+      "js": [
+        "/packs/js/application-d788b9aced247b31af4c.js"
+      ],
+      "js.map": [
+        "/packs/js/application-d788b9aced247b31af4c.js.map"
+      ]
+    },
+    "dashboard": {
+      "js": [
+        "/packs/js/dashboard-4e6db4a22e187e4ee82a.js"
+      ],
+      "js.map": [
+        "/packs/js/dashboard-4e6db4a22e187e4ee82a.js.map"
+      ]
+    },
+    "genretool": {
+      "js": [
+        "/packs/js/genretool-fd387a0a27b14ec6ba38.js"
+      ],
+      "js.map": [
+        "/packs/js/genretool-fd387a0a27b14ec6ba38.js.map"
+      ]
+    },
+    "navmenu": {
+      "js": [
+        "/packs/js/navmenu-0aa4ff11d2283f068795.js"
+      ],
+      "js.map": [
+        "/packs/js/navmenu-0aa4ff11d2283f068795.js.map"
+      ]
+    },
+    "password": {
+      "js": [
+        "/packs/js/password-d7d1a157c5e9c978834b.js"
+      ],
+      "js.map": [
+        "/packs/js/password-d7d1a157c5e9c978834b.js.map"
+      ]
+    }
+  },
+  "genretool.js": "/packs/js/genretool-fd387a0a27b14ec6ba38.js",
+  "genretool.js.map": "/packs/js/genretool-fd387a0a27b14ec6ba38.js.map",
+  "media/images/band.png": "/packs/media/images/band-cc57ce977267ac002998e679fef6d09d.png",
+  "media/images/fb.png": "/packs/media/images/fb-6c641645b259ab6b6ed49f6934254f74.png",
+  "media/images/github.png": "/packs/media/images/github-60a6f3ab9527e9afb7d3ff31f45cb8b3.png",
+  "navmenu.js": "/packs/js/navmenu-0aa4ff11d2283f068795.js",
+  "navmenu.js.map": "/packs/js/navmenu-0aa4ff11d2283f068795.js.map",
+  "password.js": "/packs/js/password-d7d1a157c5e9c978834b.js",
+  "password.js.map": "/packs/js/password-d7d1a157c5e9c978834b.js.map"
+}
