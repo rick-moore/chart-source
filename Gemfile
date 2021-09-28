@@ -26,6 +26,7 @@ gem 'cloudinary'
 gem 'omniauth'
 gem 'omniauth-github', github: 'omniauth/omniauth-github', branch: 'master'
 gem 'thin'
+gem 'mimemagic', github: 'mimemagicrb/mimemagic', ref: '01f92d86d15d85cfd0f20dabd025dcbd36a8a60f'
 
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
@@ -60,7 +61,7 @@ group :test do
 end
 
 group :production do
-  gem 'pg'
+  gem 'pg', "~> 1.2.3"
 end
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 # gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
